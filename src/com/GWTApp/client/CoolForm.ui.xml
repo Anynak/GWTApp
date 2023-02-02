@@ -1,0 +1,23 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+<g:HTMLPanel>
+
+        <div class="rendered-form">
+                <div class="formbuilder-text form-group field-text-1675340619655">
+                        <label for="text-1675340619655" class="formbuilder-text-label">Text Field</label>
+                        <input type="text" class="form-control" name="text-1675340619655"  id="text-1675340619655"/>
+                </div>
+                <div class="formbuilder-text form-group field-text-1675340624366">
+                        <label for="text-1675340624366" class="formbuilder-text-label">Text Field</label>
+                        <input type="text" class="form-control" name="text-1675340624366"  id="text-1675340624366"/>
+                </div>
+                <div class="formbuilder-button form-group field-button-1675340625231">
+                        <button type="submit" class="btn-default btn" name="button-1675340625231"  style="default" id="button-1675340625231">Button</button>
+                </div>
+        </div>
+
+
+</g:HTMLPanel>
+
+
+</ui:UiBinder>
