@@ -2,12 +2,12 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'
              xmlns:m="urn:import:gwt.material.design.client.ui">
 
-    <g:HTMLPanel>
-        <g:Label ui:field="name"></g:Label>
-        <g:Label ui:field="phone"></g:Label>
-        <g:Label ui:field="email"></g:Label>
-        <g:Label ui:field="country"></g:Label>
-        <g:Label ui:field="city"></g:Label>
-        <m:MaterialButton text="Button" waves="DEFAULT"/>
+    <g:HTMLPanel >
+        <m:MaterialCollectionItem type="AVATAR" dismissible="true">
+            <m:MaterialLabel ui:field="name" fontSize="2em"/>
+            <m:MaterialLabel ui:field="phone"/>
+            <m:MaterialLabel ui:field="email"/>
+            <m:MaterialLabel ui:field="place"/>
+        </m:MaterialCollectionItem>
     </g:HTMLPanel>
 </ui:UiBinder>

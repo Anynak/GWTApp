@@ -13,7 +13,7 @@
     <source path="client"/>
     <!-- Specify the app entry point class.                   -->
     <entry-point class='com.GWTApp.client.GWTApp'/>
-
+    <extend-property name="locale" values="en"/>
     <inherits name="com.google.gwt.user.theme.chrome.ChromeRTL"/>
     <!-- Specify the app servlets.                   -->
     <servlet path='/GWTAppService' class='com.GWTApp.server.GWTAppServiceImpl'/>

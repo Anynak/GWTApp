@@ -10,18 +10,18 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
+import gwt.material.design.client.ui.MaterialLabel;
 
 public class UserRequestView extends Composite implements DisplayUserRequest {
     @UiField
-    Label name;
+    MaterialLabel name;
     @UiField
-    Label phone;
+    MaterialLabel phone;
     @UiField
-    Label email;
+    MaterialLabel email;
     @UiField
-    Label country;
-    @UiField
-    Label city;
+    MaterialLabel place;
+
 
     private UserRequestPresenter presenter;
     @Override
@@ -34,8 +34,7 @@ public class UserRequestView extends Composite implements DisplayUserRequest {
         this.name.setText(userRequest.getName());
         this.phone.setText(userRequest.getPhone());
         this.email.setText(userRequest.getEmail());
-        this.country.setText(userRequest.getCountry());
-        this.city.setText(userRequest.getCity());
+        this.place.setText(userRequest.getCountry()+" "+userRequest.getCity());
     }
 
     @Override
@@ -48,13 +47,7 @@ public class UserRequestView extends Composite implements DisplayUserRequest {
 
     private static UserResponseViewUiBinder ourUiBinder = GWT.create(UserResponseViewUiBinder.class);
 
-    public UserRequestView(UserRequest userRequest) {
-        this.name.setText(userRequest.getName());
-        this.phone.setText(userRequest.getPhone());
-        this.email.setText(userRequest.getEmail());
-        this.country.setText(userRequest.getCountry());
-        this.city.setText(userRequest.getCity());
-    }
+
     public UserRequestView() {
         initWidget(ourUiBinder.createAndBindUi(this));
     }

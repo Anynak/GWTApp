@@ -6,10 +6,16 @@ import com.GWTApp.client.presenters.DisplayUserRequest;
 import com.GWTApp.client.views.UserRequestView;
 import com.GWTApp.model.UserRequest;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.cellview.client.CellTable;
+import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.view.client.ListDataProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -28,9 +34,55 @@ public class GWTApp implements EntryPoint {
         userRequest.setCity("Vitebsk");
         userRequest.setCountry("Belarus");
 
+        UserRequest userRequest1 = new UserRequest();
+        userRequest1.setName("Sasha");
+        userRequest1.setEmail("qwertSasha@mail.com");
+        userRequest1.setPhone("+111158761");
+        userRequest1.setCity("Minsk");
+        userRequest1.setCountry("Belarus");
+
+        List<UserRequest> users = new ArrayList<>();
+        users.add(userRequest);
+        users.add(userRequest1);
+
+        CellTable<UserRequest> table = new CellTable<>();
+        TextColumn<UserRequest> nameCol = new TextColumn<UserRequest>() {
+            @Override
+            public String getValue(UserRequest userRequest) {
+                return userRequest.getName();
+            }
+        };
+        TextColumn<UserRequest> emailCol = new TextColumn<UserRequest>() {
+            @Override
+            public String getValue(UserRequest userRequest) {
+                return userRequest.getEmail();
+            }
+        };
+        TextColumn<UserRequest> phoneCol = new TextColumn<UserRequest>() {
+            @Override
+            public String getValue(UserRequest userRequest) {
+                return userRequest.getPhone();
+            }
+        };
+        TextColumn<UserRequest> locationCol = new TextColumn<UserRequest>() {
+            @Override
+            public String getValue(UserRequest userRequest) {
+                return userRequest.getCountry()+" "+userRequest.getCity();
+            }
+        };
+        //nameCol.setSortable(true);
+        table.addColumn(locationCol, "location");
+        table.addColumn(emailCol, "email");
+        table.addColumn(phoneCol, "phone number");
+        table.addColumn(nameCol, "name");
+        ListDataProvider<UserRequest> dataProvider = new ListDataProvider<>();
+        dataProvider.addDataDisplay(table);
+        dataProvider.setList(users);
+        RootPanel.get().add(table);
+
         DisplayUserRequest view = new UserRequestView();
         Presenter presenter = new UserRequestPresenter(userRequest,view);
-        presenter.go(RootPanel.get());
+        presenter.go(RootPanel.get("users"));
         final Button button = new Button("Click me");
 
         final Label label = new Label();
