@@ -4,7 +4,13 @@
 
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
+    <inherits name="gwt.material.design.GwtMaterialWithJQuery" />
+    <inherits name="gwt.material.design.GwtMaterialDesignBasic" />
 
+
+
+    <source path="model" />
+    <source path="client"/>
     <!-- Specify the app entry point class.                   -->
     <entry-point class='com.GWTApp.client.GWTApp'/>
 

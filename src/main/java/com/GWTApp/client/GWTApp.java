@@ -2,15 +2,12 @@ package com.GWTApp.client;
 
 import com.GWTApp.client.presenters.Presenter;
 import com.GWTApp.client.presenters.UserRequestPresenter;
-import com.GWTApp.client.views.UserResponseView;
+import com.GWTApp.client.presenters.DisplayUserRequest;
+import com.GWTApp.client.views.UserRequestView;
 import com.GWTApp.model.UserRequest;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.Style;
-import com.google.gwt.event.dom.client.DoubleClickEvent;
-import com.google.gwt.event.dom.client.DoubleClickHandler;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
@@ -25,8 +22,13 @@ public class GWTApp implements EntryPoint {
      */
     public void onModuleLoad() {
         UserRequest userRequest = new UserRequest();
-        userRequest.setName("Frusa");
-        UserRequestPresenter.Display view = new UserResponseView();
+        userRequest.setName("Masha");
+        userRequest.setEmail("qwert@mail.com");
+        userRequest.setPhone("+12351458761");
+        userRequest.setCity("Vitebsk");
+        userRequest.setCountry("Belarus");
+
+        DisplayUserRequest view = new UserRequestView();
         Presenter presenter = new UserRequestPresenter(userRequest,view);
         presenter.go(RootPanel.get());
         final Button button = new Button("Click me");
