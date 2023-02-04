@@ -6,6 +6,8 @@ import com.GWTApp.client.presenters.DisplayUserRequest;
 import com.GWTApp.client.views.UserRequestView;
 import com.GWTApp.model.UserRequest;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.jsonp.client.JsonpRequestBuilder;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.*;
@@ -13,7 +15,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.view.client.ListDataProvider;
-
+import com.google.gwt.http.client.Request;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,44 +47,17 @@ public class GWTApp implements EntryPoint {
         users.add(userRequest);
         users.add(userRequest1);
 
-        CellTable<UserRequest> table = new CellTable<>();
-        TextColumn<UserRequest> nameCol = new TextColumn<UserRequest>() {
-            @Override
-            public String getValue(UserRequest userRequest) {
-                return userRequest.getName();
-            }
-        };
-        TextColumn<UserRequest> emailCol = new TextColumn<UserRequest>() {
-            @Override
-            public String getValue(UserRequest userRequest) {
-                return userRequest.getEmail();
-            }
-        };
-        TextColumn<UserRequest> phoneCol = new TextColumn<UserRequest>() {
-            @Override
-            public String getValue(UserRequest userRequest) {
-                return userRequest.getPhone();
-            }
-        };
-        TextColumn<UserRequest> locationCol = new TextColumn<UserRequest>() {
-            @Override
-            public String getValue(UserRequest userRequest) {
-                return userRequest.getCountry()+" "+userRequest.getCity();
-            }
-        };
-        //nameCol.setSortable(true);
-        table.addColumn(locationCol, "location");
-        table.addColumn(emailCol, "email");
-        table.addColumn(phoneCol, "phone number");
-        table.addColumn(nameCol, "name");
-        ListDataProvider<UserRequest> dataProvider = new ListDataProvider<>();
-        dataProvider.addDataDisplay(table);
-        dataProvider.setList(users);
-        RootPanel.get().add(table);
+        Label testLabel = new Label("testLabel");
+
+
+
+
 
         DisplayUserRequest view = new UserRequestView();
-        Presenter presenter = new UserRequestPresenter(userRequest,view);
-        presenter.go(RootPanel.get("users"));
+        Presenter presenter = new UserRequestPresenter(users,view);
+        presenter.go(RootPanel.get("content"));
+
+
         final Button button = new Button("Click me");
 
         final Label label = new Label();
@@ -107,6 +82,10 @@ public class GWTApp implements EntryPoint {
             double i = 1;
             @Override
             public void onClick(ClickEvent event) {
+
+
+
+
                 i = i + 1;
                 if(i >= Double.MAX_VALUE){
                     button1.setText("MAX");
@@ -125,11 +104,12 @@ public class GWTApp implements EntryPoint {
         // to hard-code IDs.  Instead, you could, for example, search for all
         // elements with a particular CSS class and replace them with widgets.
         //
-        RootPanel.get("slot1").add(button);
-        RootPanel.get("slot2").add(label);
-        RootPanel.get().add(button1);
-        RootPanel.get("cool_form").add(coolForm);
+        RootPanel.get("content").add(button);
+        RootPanel.get("content").add(label);
 
+        RootPanel.get("content").add(button1);
+        RootPanel.get("content").add(coolForm);
+        RootPanel.get("content").add(testLabel);
 
 
     }

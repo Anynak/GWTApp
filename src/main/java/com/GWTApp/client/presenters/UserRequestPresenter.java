@@ -4,13 +4,15 @@ import com.GWTApp.model.UserRequest;
 import com.google.gwt.user.client.ui.Panel;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class UserRequestPresenter implements Presenter {
 
-    private UserRequest userRequest;
+    private List<UserRequest> userRequest;
     private DisplayUserRequest view;
 
-    public UserRequestPresenter(UserRequest userRequest, DisplayUserRequest view) {
+    public UserRequestPresenter(List<UserRequest> userRequest, DisplayUserRequest view) {
         this.userRequest = userRequest;
         this.view = view;
         bind();
@@ -22,7 +24,7 @@ public class UserRequestPresenter implements Presenter {
     public void bind() {
         view.setPresenter(this);
         view.clear();
-        view.setUser(userRequest);
+        view.setUsers(userRequest);
 
     }
 
@@ -32,6 +34,6 @@ public class UserRequestPresenter implements Presenter {
     }
 
     public void showUser() {
-        view.setUser(userRequest);
+        view.setUsers(userRequest);
     }
 }
