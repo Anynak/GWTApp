@@ -1,0 +1,11 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:VerticalPanel >
+
+
+            <g:TextBox ui:field='loginTb' title="Login"></g:TextBox>
+            <g:PasswordTextBox ui:field="passwordTextBox" title="Password"></g:PasswordTextBox>
+            <g:Button ui:field="loginBtn" text="submit"></g:Button>
+
+    </g:VerticalPanel>
+</ui:UiBinder>

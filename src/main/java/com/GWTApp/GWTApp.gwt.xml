@@ -1,21 +1,24 @@
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN"
-        "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.10.0//EN"
+        "http://gwtproject.org/doctype/2.10.0/gwt-module.dtd">
 <module rename-to="GWTApp">
 
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
     <inherits name="gwt.material.design.GwtMaterialWithJQuery" />
     <inherits name="gwt.material.design.GwtMaterialDesignBasic" />
+    <inherits name="org.fusesource.restygwt.RestyGWT"/>
 
 
 
     <source path="model" />
     <source path="client"/>
+
     <!-- Specify the app entry point class.                   -->
     <entry-point class='com.GWTApp.client.GWTApp'/>
     <extend-property name="locale" values="en"/>
-    <inherits name="com.google.gwt.user.theme.chrome.ChromeRTL"/>
+
     <!-- Specify the app servlets.                   -->
-    <servlet path='/GWTAppService' class='com.GWTApp.server.GWTAppServiceImpl'/>
+    <!-- <servlet path='/GWTAppService' class='com.GWTApp.server.GWTAppServiceImpl'/>-->
 
 </module>
+

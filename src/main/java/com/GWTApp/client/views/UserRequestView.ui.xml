@@ -3,8 +3,13 @@
              xmlns:m="urn:import:gwt.material.design.client.ui"
              xmlns:c="urn:import:com.google.gwt.user.cellview.client">
 
-    <c:CellTable
-            pageSize='15'
-            ui:field='table'>
-    </c:CellTable>
+
+
+        <c:CellTable
+                pageSize='15'
+                ui:field='table'>
+        </c:CellTable>
+
+
+
 </ui:UiBinder>

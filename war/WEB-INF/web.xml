@@ -5,14 +5,4 @@
          version="4.0">
 
 
-    <servlet>
-        <servlet-name>com.GWTApp.GWTApp GWTAppService</servlet-name>
-        <servlet-class>com.GWTApp.server.GWTAppServiceImpl</servlet-class>
-    </servlet>
-
-
-    <servlet-mapping>
-        <servlet-name>com.GWTApp.GWTApp GWTAppService</servlet-name>
-        <url-pattern>/GWTApp/GWTAppService</url-pattern>
-    </servlet-mapping>
 </web-app>

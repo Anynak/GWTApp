@@ -1,21 +1,20 @@
 package com.GWTApp.client;
 
-import com.GWTApp.client.presenters.Presenter;
-import com.GWTApp.client.presenters.UserRequestPresenter;
-import com.GWTApp.client.presenters.DisplayUserRequest;
+import com.GWTApp.client.service.UserService;
+import com.GWTApp.client.views.LoginForm;
 import com.GWTApp.client.views.UserRequestView;
 import com.GWTApp.model.UserRequest;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.jsonp.client.JsonpRequestBuilder;
-import com.google.gwt.user.cellview.client.CellTable;
-import com.google.gwt.user.cellview.client.TextColumn;
+
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import org.fusesource.restygwt.client.Defaults;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.view.client.ListDataProvider;
-import com.google.gwt.http.client.Request;
+import org.fusesource.restygwt.client.Method;
+import org.fusesource.restygwt.client.MethodCallback;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +22,10 @@ import java.util.List;
  * Entry point classes define <code>onModuleLoad()</code>
  */
 public class GWTApp implements EntryPoint {
-    private CoolForm coolForm = new CoolForm();
+    //private CoolForm coolForm = new CoolForm();
+    //private final VerticalPanel verticalPanel = new VerticalPanel();
+    private final FlexTable flexTable = new FlexTable();
+    private final UserRequestView userRequestView = new UserRequestView();
 
     /**
      * This is the entry point method.
@@ -47,20 +49,56 @@ public class GWTApp implements EntryPoint {
         users.add(userRequest);
         users.add(userRequest1);
 
-        Label testLabel = new Label("testLabel");
+        Defaults.setServiceRoot("http://127.0.0.1:8080/");
+
+
+        UserService userService =GWT.create(UserService.class);
+        userService.getUsers(new MethodCallback<List<UserRequest>>() {
+            @Override
+            public void onFailure(Method method, Throwable throwable) {
+                System.out.println("ffffffff");
+            }
+//
+            @Override
+            public void onSuccess(Method method, List<UserRequest> userRequests) {
+                System.out.println(userRequests);
+                userRequestView.setUsers(userRequests);
+                System.out.println(users);
+                //users.addAll(userRequests);
+            }
+        });
+
+
+        TabPanel tp = new TabPanel();
+        tp.add(new HTML("Foo"), "foo");
+        tp.add(new HTML("Bar"), "bar");
+        tp.add(new HTML("Baz"), "baz");
+
+        // Show the 'bar' tab initially.
+        tp.selectTab(1);
+        //verticalPanel.add(tp);
+        flexTable.setWidget(0,0,tp);
+
+        Label label = new Label("Users");
+        //verticalPanel.add(label);
+        flexTable.setWidget(1,0,label);
 
 
 
 
+        //UserRequestView userRequestView = new UserRequestView();
+        //userRequestView.setUsers(users);
+        //verticalPanel.add(userRequestView);
+        flexTable.setWidget(2,0,userRequestView);
 
-        DisplayUserRequest view = new UserRequestView();
-        Presenter presenter = new UserRequestPresenter(users,view);
-        presenter.go(RootPanel.get("content"));
+        LoginForm loginForm = new LoginForm();
+        //verticalPanel.add(loginForm);
+        flexTable.setWidget(3,0,loginForm);
 
 
         final Button button = new Button("Click me");
 
-        final Label label = new Label();
+
 
         final Button button1 = new Button("0");
 
@@ -104,12 +142,11 @@ public class GWTApp implements EntryPoint {
         // to hard-code IDs.  Instead, you could, for example, search for all
         // elements with a particular CSS class and replace them with widgets.
         //
-        RootPanel.get("content").add(button);
-        RootPanel.get("content").add(label);
 
-        RootPanel.get("content").add(button1);
-        RootPanel.get("content").add(coolForm);
-        RootPanel.get("content").add(testLabel);
+
+        //RootPanel.get("content").add(verticalPanel);
+        RootPanel.get("content").add(flexTable);
+
 
 
     }
