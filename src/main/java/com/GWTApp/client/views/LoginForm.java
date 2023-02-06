@@ -1,5 +1,7 @@
 package com.GWTApp.client.views;
 
+import com.GWTApp.client.service.AuthenticationService;
+import com.GWTApp.model.LoginEntity;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -9,12 +11,13 @@ import com.google.gwt.user.client.ui.*;
 
 public class LoginForm extends Composite {
     @UiField
-    TextBox loginTb;
+    TextBox loginTextBox;
     @UiField
     PasswordTextBox passwordTextBox;
     @UiField
     Button loginBtn;
 
+    AuthenticationService authenticationService = new AuthenticationService();
 
     interface LoginFormUiBinder extends UiBinder<VerticalPanel, LoginForm> {
 
@@ -22,8 +25,12 @@ public class LoginForm extends Composite {
 
     private static final LoginFormUiBinder ourUiBinder = GWT.create(LoginFormUiBinder.class);
 
-    public LoginForm() {
-        initWidget(ourUiBinder.createAndBindUi(this));
+
+    private void toLoginUser() {
+        LoginEntity loginEntity = new LoginEntity();
+        loginEntity.setLogin(loginTextBox.getText());
+        loginEntity.setPassword(passwordTextBox.getText());
+        authenticationService.authUser(loginEntity);
     }
 
     public LoginForm(MainView mainView) {
@@ -32,7 +39,8 @@ public class LoginForm extends Composite {
         loginBtn.addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent clickEvent) {
-                mainView.removeForm();
+                toLoginUser();
+                mainView.showMainPage();
             }
         });
 

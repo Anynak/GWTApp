@@ -5,7 +5,7 @@
 
         <g:Label text="Authentication"/>
         <g:Label text="Login"/>
-        <g:TextBox ui:field='loginTb' title="Login"/>
+        <g:TextBox ui:field='loginTextBox' title="Login"/>
         <g:Label text="Password"/>
         <g:PasswordTextBox ui:field="passwordTextBox" title="Password"/>
         <g:Button ui:field="loginBtn" text="submit"/>

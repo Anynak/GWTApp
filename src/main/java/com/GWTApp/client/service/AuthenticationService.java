@@ -18,8 +18,7 @@ public class AuthenticationService {
 
             @Override
             public void onSuccess(Method method, Token token) {
-                Security security = new Security();
-                security.setAccessToken(token);
+                Security.setAccessToken(token);
             }
         });
     }

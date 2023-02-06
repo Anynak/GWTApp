@@ -5,8 +5,12 @@ import com.google.gwt.storage.client.Storage;
 
 public class Security {
 
-    public void setAccessToken(Token token) {
+    public static void setAccessToken(Token token) {
         Storage.getLocalStorageIfSupported().setItem("accessToken", token.getAccessToken());
 
+    }
+
+    public static String getAccessToken() {
+        return "Bearer " + Storage.getLocalStorageIfSupported().getItem("accessToken");
     }
 }
