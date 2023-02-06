@@ -11,8 +11,8 @@ import java.util.List;
 public class UsersTableService {
     public void fillTable(Integer pageNumber, Integer pageSize, String sortBy, Boolean ASC, String country, String city, UsersTableView usersTableView) {
 
-        UserService userService = GWT.create(UserService.class);
-        userService.getUsers(pageNumber, pageSize, sortBy, ASC, country, city, new MethodCallback<List<UserRequest>>() {
+        UserRepository userRepository = GWT.create(UserRepository.class);
+        userRepository.getUsers(pageNumber, pageSize, sortBy, ASC, country, city, new MethodCallback<List<UserRequest>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
 

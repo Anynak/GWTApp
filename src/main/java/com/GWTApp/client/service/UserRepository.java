@@ -10,7 +10,7 @@ import javax.ws.rs.QueryParam;
 import java.util.List;
 
 @Path("/api/user/search")
-public interface UserService extends RestService {
+public interface UserRepository extends RestService {
     @GET
     void getUsers(@QueryParam("pageNumber") Integer pageNumber
             , @QueryParam("pageSize") Integer pageSize
