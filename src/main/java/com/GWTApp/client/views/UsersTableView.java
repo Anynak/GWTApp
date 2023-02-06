@@ -9,26 +9,22 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
+
 import com.google.gwt.view.client.ListDataProvider;
-import com.ibm.icu.text.CaseMap;
-import gwt.material.design.client.ui.MaterialLabel;
 
 import java.util.List;
 
-public class UserRequestView extends Composite  {
+public class UsersTableView extends Composite  {
 
     @UiField
     CellTable<UserRequest> table;
 
 
-    interface UserResponseViewUiBinder extends UiBinder<CellTable<UserRequest>, UserRequestView> {
+    interface UserResponseViewUiBinder extends UiBinder<CellTable<UserRequest>, UsersTableView> {
     }
     private static final UserResponseViewUiBinder ourUiBinder = GWT.create(UserResponseViewUiBinder.class);
 
-    public UserRequestView() {
+    public UsersTableView() {
 
         initWidget(ourUiBinder.createAndBindUi(this));
     }
@@ -73,6 +69,9 @@ public class UserRequestView extends Composite  {
         dataProvider.addDataDisplay(table);
         dataProvider.setList(users);
     }
+
+
+
 
 
 }
