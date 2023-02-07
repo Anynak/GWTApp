@@ -9,6 +9,6 @@
         <g:Label text="Password"/>
         <g:PasswordTextBox ui:field="passwordTextBox" title="Password"/>
         <g:Button ui:field="loginBtn" text="submit"/>
-
+        <g:Label ui:field="errorLabel"/>
     </g:VerticalPanel>
 </ui:UiBinder>

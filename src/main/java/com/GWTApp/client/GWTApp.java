@@ -1,10 +1,12 @@
 package com.GWTApp.client;
 
-import com.GWTApp.client.views.MainView;
-
+import com.GWTApp.client.storage.SecurityStorage;
+import com.GWTApp.client.views.LoginFormView;
+import com.GWTApp.client.views.MainPageView;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.RootPanel;
+import org.fusesource.restygwt.client.Defaults;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>
@@ -16,10 +18,29 @@ public class GWTApp implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        MainView mainView = new MainView();
-        flexTable.setWidget(1,0,mainView);
-        mainView.showForm();
-        RootPanel.get("content").add(mainView);
+        Defaults.setServiceRoot("http://127.0.0.1:8080/");
+        RootPanel.get("content").add(flexTable);
+        if (SecurityStorage.getAccessToken() == null) {
+            showLoginPage();
+        } else {
+            showMainPage();
+        }
+
+
+    }
+
+    public void showLoginPage() {
+
+        LoginFormView loginFormView = new LoginFormView(this);
+        flexTable.setWidget(1, 0, loginFormView);
+
+
+    }
+
+    public void showMainPage() {
+        MainPageView mainView = new MainPageView(this);
+        flexTable.setWidget(1, 0, mainView);
+        mainView.showMainPage();
 
     }
 

@@ -1,15 +1,13 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'
-             xmlns:m="urn:import:gwt.material.design.client.ui"
-             xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+>
 
 
+    <g:HTMLPanel>
 
-        <c:CellTable
-                pageSize='15'
-                ui:field='table'>
-        </c:CellTable>
+        <g:FlexTable ui:field="flexTable"/>
 
 
+    </g:HTMLPanel>
 
 </ui:UiBinder>
