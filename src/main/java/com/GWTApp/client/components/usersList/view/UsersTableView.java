@@ -1,6 +1,8 @@
-package com.GWTApp.client.views;
+package com.GWTApp.client.components.usersList.view;
 
 
+import com.GWTApp.client.components.mainPage.MainPageView;
+import com.GWTApp.client.components.usersList.service.UsersTableService;
 import com.GWTApp.model.UserRequest;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -20,7 +22,7 @@ public class UsersTableView extends Composite {
     @UiField
     FlexTable flexTable = new FlexTable();
 
-    MainPageView mainPageView;
+    private final MainPageView mainPageView;
 
     interface UserResponseViewUiBinder extends UiBinder<HTMLPanel, UsersTableView> {
     }
@@ -30,6 +32,10 @@ public class UsersTableView extends Composite {
     public UsersTableView(MainPageView mainPageView) {
         this.mainPageView = mainPageView;
         initWidget(ourUiBinder.createAndBindUi(this));
+        UsersTableService tableService = new UsersTableService(this);
+        tableService.fillTable(1, 10, "name", true, "", "");
+
+
     }
 
 

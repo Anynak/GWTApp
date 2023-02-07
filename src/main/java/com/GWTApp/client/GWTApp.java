@@ -1,8 +1,8 @@
 package com.GWTApp.client;
 
 import com.GWTApp.client.storage.SecurityStorage;
-import com.GWTApp.client.views.LoginFormView;
-import com.GWTApp.client.views.MainPageView;
+import com.GWTApp.client.components.authentication.view.LoginFormView;
+import com.GWTApp.client.components.mainPage.MainPageView;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.RootPanel;

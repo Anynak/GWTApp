@@ -1,9 +1,12 @@
-package com.GWTApp.client.service;
+package com.GWTApp.client.components.authentication.service;
 
+import com.GWTApp.client.components.authentication.repository.AuthenticationRepository;
 import com.GWTApp.client.storage.SecurityStorage;
 import com.GWTApp.client.storage.entity.Token;
-import com.GWTApp.client.views.LoginFormView;
+import com.GWTApp.client.components.authentication.view.LoginFormView;
+
 import com.GWTApp.model.LoginEntity;
+
 import com.google.gwt.core.client.GWT;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;

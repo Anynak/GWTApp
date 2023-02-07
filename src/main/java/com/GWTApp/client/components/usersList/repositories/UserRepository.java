@@ -1,4 +1,4 @@
-package com.GWTApp.client.service;
+package com.GWTApp.client.components.usersList.repositories;
 
 import com.GWTApp.model.UserRequest;
 import org.fusesource.restygwt.client.MethodCallback;
