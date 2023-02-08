@@ -1,17 +1,12 @@
 package com.GWTApp.model;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import lombok.Data;
-
-
-public class UserRequest  {
+public class UserRequest {
     private String login;
     private String name;
     private String phone;
     private String email;
     private String country;
     private String city;
-
 
 
     public String getLogin() {

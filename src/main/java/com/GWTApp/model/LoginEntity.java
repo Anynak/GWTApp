@@ -1,8 +1,6 @@
 package com.GWTApp.model;
 
 
-
-
 public class LoginEntity {
     String login;
     String password;

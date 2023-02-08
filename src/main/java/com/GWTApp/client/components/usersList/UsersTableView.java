@@ -18,15 +18,10 @@ import java.util.List;
 
 public class UsersTableView extends Composite {
 
+    private static final UserResponseViewUiBinder ourUiBinder = GWT.create(UserResponseViewUiBinder.class);
+    private final MainPageView mainPageView;
     @UiField
     FlexTable flexTable = new FlexTable();
-
-    private final MainPageView mainPageView;
-
-    interface UserResponseViewUiBinder extends UiBinder<HTMLPanel, UsersTableView> {
-    }
-
-    private static final UserResponseViewUiBinder ourUiBinder = GWT.create(UserResponseViewUiBinder.class);
 
     public UsersTableView(MainPageView mainPageView) {
         this.mainPageView = mainPageView;
@@ -36,7 +31,6 @@ public class UsersTableView extends Composite {
 
 
     }
-
 
     public void showLoginPage(Method method) {
         mainPageView.showLoginPage();
@@ -81,6 +75,9 @@ public class UsersTableView extends Composite {
         dataProvider.addDataDisplay(table);
         dataProvider.setList(users);
         flexTable.setWidget(1, 1, table);
+    }
+
+    interface UserResponseViewUiBinder extends UiBinder<HTMLPanel, UsersTableView> {
     }
 
 

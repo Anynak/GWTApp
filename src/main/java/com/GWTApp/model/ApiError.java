@@ -1,9 +1,5 @@
 package com.GWTApp.model;
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
-
-
 import java.util.List;
 
 //@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
