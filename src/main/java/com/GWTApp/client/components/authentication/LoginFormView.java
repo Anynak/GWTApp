@@ -1,21 +1,15 @@
-package com.GWTApp.client.components.authentication.view;
+package com.GWTApp.client.components.authentication;
 
 import com.GWTApp.client.GWTApp;
-import com.GWTApp.client.components.authentication.service.AuthenticationService;
-import com.GWTApp.model.ApiError;
 import com.GWTApp.model.LoginEntity;
-
-import com.github.nmorel.gwtjackson.client.ObjectMapper;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.json.client.JSONParser;
+import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
-
-
-import gwt.interop.utils.client.JSON;
 import org.fusesource.restygwt.client.Method;
 
 public class LoginFormView extends Composite {
@@ -48,18 +42,16 @@ public class LoginFormView extends Composite {
 
     public void showError(Method method) {
 
-
         String errorMessage = method.getResponse().getText();
 
-
         try {
-            ApiError apiError = JSON.parse(errorMessage);
-            errorLabel.setText(apiError.toString());
+            JSONValue apiError = JSONParser.parseStrict(errorMessage);
+            String mes = apiError.isObject().get("message").isString().toString();
+            errorLabel.setText(mes);
 
         } catch (Exception e) {
-            errorLabel.setText(e.getMessage());
+            errorLabel.setText(errorMessage);
         }
-
 
     }
 

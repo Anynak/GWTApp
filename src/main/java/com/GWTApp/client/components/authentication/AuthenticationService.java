@@ -1,9 +1,7 @@
-package com.GWTApp.client.components.authentication.service;
+package com.GWTApp.client.components.authentication;
 
-import com.GWTApp.client.components.authentication.repository.AuthenticationRepository;
 import com.GWTApp.client.storage.SecurityStorage;
 import com.GWTApp.client.storage.entity.Token;
-import com.GWTApp.client.components.authentication.view.LoginFormView;
 
 import com.GWTApp.model.LoginEntity;
 

@@ -1,7 +1,5 @@
-package com.GWTApp.client.components.usersList.service;
+package com.GWTApp.client.components.usersList;
 
-import com.GWTApp.client.components.usersList.view.UsersTableView;
-import com.GWTApp.client.components.usersList.repositories.UserRepository;
 import com.GWTApp.client.storage.SecurityStorage;
 import com.GWTApp.model.UserRequest;
 import com.google.gwt.core.client.GWT;
