@@ -1,8 +1,7 @@
-package com.GWTApp.client.components.usersList.view;
+package com.GWTApp.client.components.usersList;
 
 
 import com.GWTApp.client.components.mainPage.MainPageView;
-import com.GWTApp.client.components.usersList.service.UsersTableService;
 import com.GWTApp.model.UserRequest;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -35,8 +34,6 @@ public class UsersTableView extends Composite {
 
     public void showLoginPage(Method method) {
         mainPageView.showLoginPage();
-        //Label error = new Label(method.getResponse().getStatusText() + " " + method.getResponse().getStatusCode());
-        //flexTable.setWidget(1, 1, error);
     }
 
     public void setUsers(List<UserRequest> users) {

@@ -1,7 +1,7 @@
 package com.GWTApp.client.components.mainPage;
 
 import com.GWTApp.client.GWTApp;
-import com.GWTApp.client.components.usersList.view.UsersTableView;
+import com.GWTApp.client.components.usersList.UsersTableView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
