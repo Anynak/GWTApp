@@ -1,8 +1,9 @@
 package com.GWTApp.client;
 
-import com.GWTApp.client.storage.SecurityStorage;
 import com.GWTApp.client.components.authentication.view.LoginFormView;
 import com.GWTApp.client.components.mainPage.MainPageView;
+import com.GWTApp.client.components.registration.view.RegistrationFormView;
+import com.GWTApp.client.storage.SecurityStorage;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -22,6 +23,7 @@ public class GWTApp implements EntryPoint {
         RootPanel.get("content").add(flexTable);
         if (SecurityStorage.getAccessToken() == null) {
             showLoginPage();
+            showRegisterPage();
         } else {
             showMainPage();
         }
@@ -33,8 +35,11 @@ public class GWTApp implements EntryPoint {
 
         LoginFormView loginFormView = new LoginFormView(this);
         flexTable.setWidget(1, 0, loginFormView);
+    }
 
-
+    public void showRegisterPage() {
+        RegistrationFormView registrationFormView = new RegistrationFormView(this);
+        flexTable.setWidget(2, 0, registrationFormView);
     }
 
     public void showMainPage() {

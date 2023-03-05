@@ -1,6 +1,8 @@
 package com.GWTApp.model;
 
-public class UserRequest {
+public class UserResponse {
+
+    private Long userId;
     private String login;
     private String name;
     private String phone;
@@ -8,6 +10,26 @@ public class UserRequest {
     private String country;
     private String city;
 
+    public UserResponse() {
+    }
+
+    public UserResponse(Long userId, String login, String name, String phone, String email, String country, String city) {
+        this.userId = userId;
+        this.login = login;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.country = country;
+        this.city = city;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getLogin() {
         return login;

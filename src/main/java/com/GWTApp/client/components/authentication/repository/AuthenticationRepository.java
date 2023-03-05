@@ -11,6 +11,6 @@ import javax.ws.rs.Path;
 @Path("/api/auth")
 public interface AuthenticationRepository extends RestService {
     @POST
-    @Path("/login")
-    void loginUser(LoginEntity loginEntity, MethodCallback<Token> tokenMethodCallback);
+    @Path("/v1/login")
+    void loginUser(LoginEntity loginEntity, MethodCallback<Token> methodCallback);
 }

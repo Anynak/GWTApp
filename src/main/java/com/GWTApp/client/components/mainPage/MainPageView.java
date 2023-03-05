@@ -10,14 +10,10 @@ import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
 public class MainPageView extends Composite {
+    private static final MainViewUiBinder ourUiBinder = GWT.create(MainViewUiBinder.class);
+    private final GWTApp gwtApp;
     @UiField
     FlexTable flexTable = new FlexTable();
-    private final GWTApp gwtApp;
-
-    interface MainViewUiBinder extends UiBinder<HTMLPanel, MainPageView> {
-    }
-
-    private static final MainViewUiBinder ourUiBinder = GWT.create(MainViewUiBinder.class);
 
     public MainPageView(GWTApp gwtApp) {
         this.gwtApp = gwtApp;
@@ -32,6 +28,9 @@ public class MainPageView extends Composite {
     public void showLoginPage() {
         gwtApp.showLoginPage();
 
+    }
+
+    interface MainViewUiBinder extends UiBinder<HTMLPanel, MainPageView> {
     }
 
 }

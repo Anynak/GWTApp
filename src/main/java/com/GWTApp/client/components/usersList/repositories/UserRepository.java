@@ -10,7 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import java.util.List;
 
-@Path("/api/user/search")
+@Path("/api/users/v1/search")
 public interface UserRepository extends RestService {
     @GET
     void getUsers(

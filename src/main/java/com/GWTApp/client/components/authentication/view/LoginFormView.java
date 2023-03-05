@@ -4,21 +4,15 @@ import com.GWTApp.client.GWTApp;
 import com.GWTApp.client.components.authentication.service.AuthenticationService;
 import com.GWTApp.model.ApiError;
 import com.GWTApp.model.LoginEntity;
-
-import com.github.nmorel.gwtjackson.client.ObjectMapper;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
-
-
 import gwt.interop.utils.client.JSON;
 import org.fusesource.restygwt.client.Method;
 
 public class LoginFormView extends Composite {
+    private static final LoginFormUiBinder ourUiBinder = GWT.create(LoginFormUiBinder.class);
     @UiField
     Label errorLabel;
     @UiField
@@ -29,13 +23,13 @@ public class LoginFormView extends Composite {
     Button loginBtn;
     GWTApp gwtApp;
 
+    public LoginFormView(GWTApp gwtApp) {
+        this.gwtApp = gwtApp;
+        initWidget(ourUiBinder.createAndBindUi(this));
 
-    interface LoginFormUiBinder extends UiBinder<VerticalPanel, LoginFormView> {
+        loginBtn.addClickHandler(clickEvent -> toLoginUser());
 
     }
-
-    private static final LoginFormUiBinder ourUiBinder = GWT.create(LoginFormUiBinder.class);
-
 
     private void toLoginUser() {
         AuthenticationService authenticationService = new AuthenticationService(this);
@@ -68,17 +62,7 @@ public class LoginFormView extends Composite {
 
     }
 
-    public LoginFormView(GWTApp gwtApp) {
-        this.gwtApp = gwtApp;
-        initWidget(ourUiBinder.createAndBindUi(this));
-
-        loginBtn.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent clickEvent) {
-                toLoginUser();
-
-            }
-        });
+    interface LoginFormUiBinder extends UiBinder<VerticalPanel, LoginFormView> {
 
     }
 }

@@ -1,0 +1,35 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <g:VerticalPanel>
+
+        <g:Label text="Registration"/>
+
+        <g:Label text="Login"/>
+        <g:TextBox ui:field='loginTextBox' title="login"/>
+
+        <g:Label text="Name"/>
+        <g:TextBox ui:field='nameTextBox' title="name"/>
+
+        <g:Label text="Phone"/>
+        <g:TextBox ui:field='phoneTextBox' title="phone"/>
+
+        <g:Label text="Email"/>
+        <g:TextBox ui:field='emailTextBox' title="email"/>
+
+        <g:Label text="Country"/>
+        <g:TextBox ui:field='countryTextBox' title="country"/>
+
+        <g:Label text="City"/>
+        <g:TextBox ui:field='cityTextBox' title="city"/>
+
+        <g:Label text="Password"/>
+        <g:PasswordTextBox ui:field="passwordTextBox" title="Password"/>
+
+        <g:Label text="Repeat password"/>
+        <g:PasswordTextBox ui:field="repeatPasswordTextBox" title="repeatPassword"/>
+
+        <g:Button ui:field="registerBtn" text="submit"/>
+        <g:Label ui:field="errorLabel"/>
+    </g:VerticalPanel>
+</ui:UiBinder>

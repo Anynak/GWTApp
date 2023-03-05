@@ -1,13 +1,28 @@
 package com.GWTApp.model;
 
-public class UserRequest {
+public class RegisterEntity {
     private String login;
     private String name;
     private String phone;
     private String email;
     private String country;
     private String city;
+    private String password;
+    private String repeatPassword;
 
+    public RegisterEntity(String login, String name, String phone, String email, String country, String city, String password, String repeatPassword) {
+        this.login = login;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.country = country;
+        this.city = city;
+        this.password = password;
+        this.repeatPassword = repeatPassword;
+    }
+
+    public RegisterEntity() {
+    }
 
     public String getLogin() {
         return login;
@@ -55,5 +70,21 @@ public class UserRequest {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRepeatPassword() {
+        return repeatPassword;
+    }
+
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
     }
 }

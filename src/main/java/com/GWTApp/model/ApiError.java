@@ -1,54 +1,36 @@
 package com.GWTApp.model;
 
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
-
-
-import java.util.List;
 
 //@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Object")
 public class ApiError {
 
-    private String status;
-    private String message;
-    private List<String> errors;
+    private String error;
+    private String userMessage;
     private String timestamp;
 
-    public ApiError(String status, String message, List<String> errors, String timestamp) {
-        this.status = status;
-        this.message = message;
-        this.errors = errors;
+    public ApiError(String error, String userMessage, String timestamp) {
+        this.error = error;
+        this.userMessage = userMessage;
         this.timestamp = timestamp;
     }
 
     public ApiError() {
-
     }
 
-
-    public String getStatus() {
-        return this.status;
+    public String getError() {
+        return error;
     }
 
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setError(String error) {
+        this.error = error;
     }
 
-    public String getMessage() {
-        return this.message;
+    public String getUserMessage() {
+        return userMessage;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public List<String> getErrors() {
-        return errors;
-    }
-
-    public void setErrors(List<String> errors) {
-        this.errors = errors;
+    public void setUserMessage(String userMessage) {
+        this.userMessage = userMessage;
     }
 
     public String getTimestamp() {
@@ -57,15 +39,5 @@ public class ApiError {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
-    }
-
-    @Override
-    public String toString() {
-        return "ApiError{" +
-                "status='" + status + '\'' +
-                ", message='" + message + '\'' +
-                ", errors=" + errors +
-                ", timestamp='" + timestamp + '\'' +
-                '}';
     }
 }
