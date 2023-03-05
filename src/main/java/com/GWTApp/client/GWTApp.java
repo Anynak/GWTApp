@@ -1,6 +1,6 @@
 package com.GWTApp.client;
 
-import com.GWTApp.client.components.authentication.view.LoginFormView;
+import com.GWTApp.client.components.authentication.LoginFormView;
 import com.GWTApp.client.components.mainPage.MainPageView;
 import com.GWTApp.client.components.registration.view.RegistrationFormView;
 import com.GWTApp.client.storage.SecurityStorage;
