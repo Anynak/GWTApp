@@ -1,14 +1,13 @@
 package com.GWTApp.client.components.registration.view;
 
 import com.GWTApp.client.GWTApp;
+import com.GWTApp.client.components.apierror.ApiErrorView;
 import com.GWTApp.client.components.registration.service.RegistrationService;
-import com.GWTApp.model.ApiError;
 import com.GWTApp.model.RegisterEntity;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
-import gwt.interop.utils.client.JSON;
 import org.fusesource.restygwt.client.Method;
 
 public class RegistrationFormView extends Composite {
@@ -33,6 +32,12 @@ public class RegistrationFormView extends Composite {
     PasswordTextBox repeatPasswordTextBox;
     @UiField
     Button registerBtn;
+    @UiField
+    Button signInBtn;
+    @UiField
+    VerticalPanel mainPanel;
+
+    private final ApiErrorView apiErrorView = new ApiErrorView();
     GWTApp gwtApp;
 
     public RegistrationFormView(GWTApp gwtApp) {
@@ -40,6 +45,9 @@ public class RegistrationFormView extends Composite {
         initWidget(ourUiBinder.createAndBindUi(this));
 
         registerBtn.addClickHandler(clickEvent -> registerUser());
+        signInBtn.addClickHandler(clickEvent -> gwtApp.showLoginPage());
+        mainPanel.add(apiErrorView);
+
     }
 
     public void onRegistrationSuccess() {
@@ -63,16 +71,8 @@ public class RegistrationFormView extends Composite {
     }
 
     public void showError(Method method) {
-        String errorMessage = method.getResponse().getText();
-
-
-        try {
-            ApiError apiError = JSON.parse(errorMessage);
-            errorLabel.setText(apiError.toString());
-
-        } catch (Exception e) {
-            errorLabel.setText(e.getMessage());
-        }
+        this.apiErrorView.setMethod(method);
+        this.apiErrorView.show();
     }
 
     interface RegistrationFormUiBinder extends UiBinder<VerticalPanel, RegistrationFormView> {

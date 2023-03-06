@@ -8,7 +8,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.fusesource.restygwt.client.Defaults;
-
+//https://javastudy.ru/category/gwt/
 /**
  * Entry point classes define <code>onModuleLoad()</code>
  */
@@ -22,7 +22,7 @@ public class GWTApp implements EntryPoint {
         Defaults.setServiceRoot("http://127.0.0.1:8080/");
         RootPanel.get("content").add(flexTable);
         if (SecurityStorage.getAccessToken() == null) {
-            showLoginPage();
+            //showLoginPage();
             showRegisterPage();
         } else {
             showMainPage();
@@ -39,7 +39,7 @@ public class GWTApp implements EntryPoint {
 
     public void showRegisterPage() {
         RegistrationFormView registrationFormView = new RegistrationFormView(this);
-        flexTable.setWidget(2, 0, registrationFormView);
+        flexTable.setWidget(1, 0, registrationFormView);
     }
 
     public void showMainPage() {

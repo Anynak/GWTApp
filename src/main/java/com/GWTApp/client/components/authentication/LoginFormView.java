@@ -1,12 +1,9 @@
 package com.GWTApp.client.components.authentication;
 
 import com.GWTApp.client.GWTApp;
+import com.GWTApp.client.components.apierror.ApiErrorView;
 import com.GWTApp.model.LoginEntity;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.json.client.JSONParser;
-import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
@@ -14,27 +11,30 @@ import org.fusesource.restygwt.client.Method;
 
 public class LoginFormView extends Composite {
     private static final LoginFormUiBinder ourUiBinder = GWT.create(LoginFormUiBinder.class);
-    @UiField
-    Label errorLabel;
+
     @UiField
     TextBox loginTextBox;
     @UiField
     PasswordTextBox passwordTextBox;
     @UiField
     Button loginBtn;
+
+    @UiField
+    Button registerBtn;
+    @UiField
+    VerticalPanel mainPanel;
     GWTApp gwtApp;
+
+    private final ApiErrorView apiErrorView = new ApiErrorView();
 
     public LoginFormView(GWTApp gwtApp) {
         this.gwtApp = gwtApp;
         initWidget(ourUiBinder.createAndBindUi(this));
 
-        loginBtn.addClickHandler(new ClickHandler() {
-            @Override
-            public void onClick(ClickEvent clickEvent) {
-                toLoginUser();
+        loginBtn.addClickHandler(clickEvent -> toLoginUser());
+        registerBtn.addClickHandler(clickEvent -> gwtApp.showRegisterPage());
 
-            }
-        });
+        mainPanel.add(apiErrorView);
 
     }
 
@@ -48,18 +48,8 @@ public class LoginFormView extends Composite {
     }
 
     public void showError(Method method) {
-
-        String errorMessage = method.getResponse().getText();
-
-        try {
-            JSONValue apiError = JSONParser.parseStrict(errorMessage);
-            String mes = apiError.isObject().get("message").isString().toString();
-            errorLabel.setText(mes);
-
-        } catch (Exception e) {
-            errorLabel.setText(errorMessage);
-        }
-
+        this.apiErrorView.setMethod(method);
+        this.apiErrorView.show();
     }
 
     public void onLoginSuccess() {
