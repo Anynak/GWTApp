@@ -16,7 +16,7 @@ public class UsersTableService {
 
     public UsersTableService(UsersTableView usersTableView) {
         this.usersTableView = usersTableView;
-        userRepository = GWT.create(UserRepository.class);
+        this.userRepository = GWT.create(UserRepository.class);
     }
 
     public void fillTable(Integer pageNumber, Integer pageSize, String sortBy, Boolean ASC, String country, String city) {

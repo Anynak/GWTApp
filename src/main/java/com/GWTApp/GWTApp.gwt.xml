@@ -4,8 +4,8 @@
 
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
-    <inherits name="gwt.material.design.GwtMaterialWithJQuery"/>
-    <inherits name="gwt.material.design.GwtMaterialDesignBasic"/>
+    <!-- <inherits name="gwt.material.design.GwtMaterialWithJQuery"/>
+    <inherits name="gwt.material.design.GwtMaterialDesignBasic"/>-->
     <inherits name="org.fusesource.restygwt.RestyGWT"/>
     <inherits name="com.github.nmorel.gwtjackson.GwtJackson"/>
     <inherits name="gwt.interop.utils.InteropUtils"/>

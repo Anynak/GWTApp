@@ -1,4 +1,4 @@
-package com.GWTApp.client.components.registration.repository;
+package com.GWTApp.client.components.registration;
 
 import com.GWTApp.model.RegisterEntity;
 import com.GWTApp.model.UserResponse;

@@ -14,14 +14,14 @@ import java.util.List;
 public interface UserRepository extends RestService {
     @GET
     void getUsers(
-            @HeaderParam("Authorization") String token
-            , @QueryParam("pageNumber") Integer pageNumber
-            , @QueryParam("pageSize") Integer pageSize
-            , @QueryParam("sortBy") String sortBy
-            , @QueryParam("ASC") Boolean ASC
-            , @QueryParam("country") String country
-            , @QueryParam("city") String city
-            , MethodCallback<List<UserRequest>> users
+            @HeaderParam("Authorization") String token,
+            @QueryParam("pageNumber") Integer pageNumber,
+            @QueryParam("pageSize") Integer pageSize,
+            @QueryParam("sortBy") String sortBy,
+            @QueryParam("ASC") Boolean ASC,
+            @QueryParam("country") String country,
+            @QueryParam("city") String city,
+            MethodCallback<List<UserRequest>> users
     );
 
 }

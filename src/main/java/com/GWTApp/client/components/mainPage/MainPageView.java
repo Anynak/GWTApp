@@ -1,6 +1,7 @@
 package com.GWTApp.client.components.mainPage;
 
 import com.GWTApp.client.GWTApp;
+import com.GWTApp.client.components.announcementForm.AnnouncementFormView;
 import com.GWTApp.client.components.usersList.UsersTableView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -21,8 +22,10 @@ public class MainPageView extends Composite {
     }
 
     public void showMainPage() {
-        UsersTableView usersTableView = new UsersTableView(this);
-        flexTable.setWidget(1, 0, usersTableView);
+        AnnouncementFormView announcementFormView = new AnnouncementFormView(this);
+        flexTable.setWidget(1, 0, announcementFormView);
+        //UsersTableView usersTableView = new UsersTableView(this);
+        //flexTable.setWidget(1, 0, usersTableView);
     }
 
     public void showLoginPage() {

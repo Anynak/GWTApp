@@ -1,7 +1,5 @@
-package com.GWTApp.client.components.registration.service;
+package com.GWTApp.client.components.registration;
 
-import com.GWTApp.client.components.registration.repository.RegistrationRepository;
-import com.GWTApp.client.components.registration.view.RegistrationFormView;
 import com.GWTApp.model.RegisterEntity;
 import com.GWTApp.model.UserResponse;
 import com.google.gwt.core.client.GWT;

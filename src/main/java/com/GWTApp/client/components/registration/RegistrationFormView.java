@@ -1,8 +1,7 @@
-package com.GWTApp.client.components.registration.view;
+package com.GWTApp.client.components.registration;
 
 import com.GWTApp.client.GWTApp;
 import com.GWTApp.client.components.apierror.ApiErrorView;
-import com.GWTApp.client.components.registration.service.RegistrationService;
 import com.GWTApp.model.RegisterEntity;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
