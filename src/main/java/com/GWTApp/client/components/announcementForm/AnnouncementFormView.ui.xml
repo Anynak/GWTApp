@@ -3,6 +3,18 @@
     <g:VerticalPanel ui:field="mainPanel">
         <g:ListBox ui:field="brands"/>
         <g:ListBox ui:field="models"/>
+
+        <g:Label text="release year"/>
+        <g:TextBox ui:field='releaseYearTextBox' title="releaseYear"/>
+        <g:Label text="color"/>
+        <g:TextBox ui:field='colorTextBox' title="releaseYear"/>
+        <g:Label text="mileage"/>
+        <g:TextBox ui:field='mileageTextBox' title="mileage"/>
+        <g:Label text="price"/>
+        <g:TextBox ui:field='priceTextBox' title="price"/>
+        <g:Label text="comment"/>
+        <g:TextBox ui:field='commentTextBox' title="comment"/>
+
     </g:VerticalPanel>
 
 
