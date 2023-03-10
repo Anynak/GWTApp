@@ -24,7 +24,7 @@ public class UsersTableService {
         userRepository.getUsers(SecurityStorage.getAccessToken(), pageNumber, pageSize, sortBy, ASC, country, city, new MethodCallback<List<UserRequest>>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                usersTableView.showLoginPage(method);
+                usersTableView.handleError(method);
             }
 
             @Override

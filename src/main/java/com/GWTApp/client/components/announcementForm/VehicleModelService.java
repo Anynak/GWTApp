@@ -1,7 +1,6 @@
 package com.GWTApp.client.components.announcementForm;
 
 import com.GWTApp.client.storage.SecurityStorage;
-import com.GWTApp.model.VehicleBrand;
 import com.GWTApp.model.VehicleModel;
 import com.google.gwt.core.client.GWT;
 import org.fusesource.restygwt.client.Method;
@@ -23,7 +22,7 @@ public class VehicleModelService {
 
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                announcementFormView.showError(method);
+                announcementFormView.handleError(method);
             }
 
             @Override

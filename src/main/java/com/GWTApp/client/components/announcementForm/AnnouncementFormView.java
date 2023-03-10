@@ -7,10 +7,7 @@ import com.GWTApp.model.VehicleModel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.*;
 import org.fusesource.restygwt.client.Method;
 
 import java.util.List;
@@ -34,14 +31,16 @@ public class AnnouncementFormView extends Composite {
     TextBox priceTextBox;
     @UiField
     TextBox commentTextBox;
+    @UiField
+    Button submitBtn;
 
     private final ApiErrorView apiErrorView = new ApiErrorView();
-    private final MainPageView mainPageView;
+    private final MainPageView parentView;
     private final VehicleModelService modelService = new VehicleModelService(this);
 
-    public void showError(Method method) {
-        this.apiErrorView.setMethod(method);
-        this.apiErrorView.show();
+    public void handleError(Method method) {
+        this.parentView.handleError(method);
+
     }
 
     interface AnnouncementFormUiBinder extends UiBinder<VerticalPanel, AnnouncementFormView> {
@@ -51,7 +50,7 @@ public class AnnouncementFormView extends Composite {
 
     public AnnouncementFormView(MainPageView mainPageView) {
 
-        this.mainPageView = mainPageView;
+        this.parentView = mainPageView;
         initWidget(ourUiBinder.createAndBindUi(this));
         mainPanel.add(apiErrorView);
 

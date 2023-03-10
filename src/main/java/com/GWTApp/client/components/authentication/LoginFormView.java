@@ -23,12 +23,12 @@ public class LoginFormView extends Composite {
     Button registerBtn;
     @UiField
     VerticalPanel mainPanel;
-    GWTApp gwtApp;
+    GWTApp parentView;
 
     private final ApiErrorView apiErrorView = new ApiErrorView();
 
     public LoginFormView(GWTApp gwtApp) {
-        this.gwtApp = gwtApp;
+        this.parentView = gwtApp;
         initWidget(ourUiBinder.createAndBindUi(this));
 
         loginBtn.addClickHandler(clickEvent -> toLoginUser());
@@ -53,7 +53,7 @@ public class LoginFormView extends Composite {
     }
 
     public void onLoginSuccess() {
-        gwtApp.showMainPage();
+        parentView.showMainPage();
 
     }
 

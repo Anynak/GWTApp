@@ -1,6 +1,7 @@
 package com.GWTApp.client.components.usersList;
 
 
+import com.GWTApp.client.components.apierror.ApiErrorView;
 import com.GWTApp.client.components.mainPage.MainPageView;
 import com.GWTApp.model.UserRequest;
 import com.google.gwt.core.client.GWT;
@@ -19,21 +20,22 @@ import java.util.List;
 public class UsersTableView extends Composite {
 
     private static final UserResponseViewUiBinder ourUiBinder = GWT.create(UserResponseViewUiBinder.class);
-    private final MainPageView mainPageView;
+    private final MainPageView parentView;
+    private final ApiErrorView apiErrorView = new ApiErrorView();
+
     @UiField
     FlexTable flexTable = new FlexTable();
 
     public UsersTableView(MainPageView mainPageView) {
-        this.mainPageView = mainPageView;
+        this.parentView = mainPageView;
         initWidget(ourUiBinder.createAndBindUi(this));
         UsersTableService tableService = new UsersTableService(this);
         tableService.fillTable(1, 10, "name", true, "", "");
 
 
     }
-
-    public void showLoginPage(Method method) {
-        mainPageView.showLoginPage();
+    public void handleError(Method method) {
+        this.parentView.handleError(method);
     }
 
     public void setUsers(List<UserRequest> users) {

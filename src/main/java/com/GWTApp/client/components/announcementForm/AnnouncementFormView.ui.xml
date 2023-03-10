@@ -14,7 +14,7 @@
         <g:TextBox ui:field='priceTextBox' title="price"/>
         <g:Label text="comment"/>
         <g:TextBox ui:field='commentTextBox' title="comment"/>
-
+        <g:Button ui:field="submitBtn" text="submit"/>
     </g:VerticalPanel>
 
 

@@ -37,10 +37,10 @@ public class RegistrationFormView extends Composite {
     VerticalPanel mainPanel;
 
     private final ApiErrorView apiErrorView = new ApiErrorView();
-    GWTApp gwtApp;
+    private final GWTApp parentView;
 
     public RegistrationFormView(GWTApp gwtApp) {
-        this.gwtApp = gwtApp;
+        this.parentView = gwtApp;
         initWidget(ourUiBinder.createAndBindUi(this));
 
         registerBtn.addClickHandler(clickEvent -> registerUser());
@@ -50,7 +50,7 @@ public class RegistrationFormView extends Composite {
     }
 
     public void onRegistrationSuccess() {
-        gwtApp.showLoginPage();
+        parentView.showLoginPage();
 
     }
 

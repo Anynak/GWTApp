@@ -23,7 +23,7 @@ public class VehicleBrandService {
 
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                announcementFormView.showError(method);
+                announcementFormView.handleError(method);
             }
 
             @Override
