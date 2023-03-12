@@ -13,20 +13,14 @@ import org.fusesource.restygwt.client.Method;
 
 public class ApiErrorView extends Composite {
 
+    private static final ApiErrorViewUiBinder ourUiBinder = GWT.create(ApiErrorViewUiBinder.class);
     @UiField
     HTML errorText;
-
     private Method method;
-
-    interface ApiErrorViewUiBinder extends UiBinder<HTML, ApiErrorView> {
-    }
-
-    private static final ApiErrorViewUiBinder ourUiBinder = GWT.create(ApiErrorViewUiBinder.class);
 
     public ApiErrorView() {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
-
 
     public void setMethod(Method method) {
         this.method = method;
@@ -47,8 +41,11 @@ public class ApiErrorView extends Composite {
             errorText.setHTML(errorMessages.toString());
 //
         } catch (Exception e) {
-            errorText.setText(errorMessage);
+            errorText.setText(method.getResponse().getText());
         }
+    }
+
+    interface ApiErrorViewUiBinder extends UiBinder<HTML, ApiErrorView> {
     }
 
 

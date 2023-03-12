@@ -1,4 +1,4 @@
-package com.GWTApp.client.components.authentication;
+package com.GWTApp.client.repositories;
 
 import com.GWTApp.client.storage.entity.Token;
 import com.GWTApp.model.LoginEntity;

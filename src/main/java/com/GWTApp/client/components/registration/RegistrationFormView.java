@@ -11,6 +11,8 @@ import org.fusesource.restygwt.client.Method;
 
 public class RegistrationFormView extends Composite {
     private static final RegistrationFormView.RegistrationFormUiBinder ourUiBinder = GWT.create(RegistrationFormView.RegistrationFormUiBinder.class);
+    private final ApiErrorView apiErrorView = new ApiErrorView();
+    private final GWTApp parentView;
     @UiField
     Label errorLabel;
     @UiField
@@ -35,9 +37,6 @@ public class RegistrationFormView extends Composite {
     Button signInBtn;
     @UiField
     VerticalPanel mainPanel;
-
-    private final ApiErrorView apiErrorView = new ApiErrorView();
-    private final GWTApp parentView;
 
     public RegistrationFormView(GWTApp gwtApp) {
         this.parentView = gwtApp;
@@ -69,7 +68,8 @@ public class RegistrationFormView extends Composite {
 
     }
 
-    public void showError(Method method) {
+    public void handleError(Method method) {
+        //this.parentView.handleError(method);
         this.apiErrorView.setMethod(method);
         this.apiErrorView.show();
     }

@@ -1,5 +1,6 @@
 package com.GWTApp.client.components.registration;
 
+import com.GWTApp.client.repositories.RegistrationRepository;
 import com.GWTApp.model.RegisterEntity;
 import com.GWTApp.model.UserResponse;
 import com.google.gwt.core.client.GWT;
@@ -18,7 +19,7 @@ public class RegistrationService {
         repository.registerUser(registerEntity, new MethodCallback<UserResponse>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                registrationFormView.showError(method);
+                registrationFormView.handleError(method);
             }
 
             @Override

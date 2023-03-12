@@ -1,6 +1,6 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'
-             xmlns:m='urn:import:gwt.material.design.client.ui'>
+>
 
     <g:VerticalPanel ui:field="mainPanel">
 
@@ -13,10 +13,6 @@
             <g:Button ui:field="loginBtn" text="submit"/>
             <g:Button ui:field="registerBtn" text="Sign up"/>
         </g:HorizontalPanel>
-
-
-
-
 
 
     </g:VerticalPanel>

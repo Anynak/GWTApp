@@ -1,4 +1,4 @@
-package com.GWTApp.client.components.announcementForm;
+package com.GWTApp.client.repositories;
 
 import com.GWTApp.model.VehicleBrand;
 import org.fusesource.restygwt.client.MethodCallback;

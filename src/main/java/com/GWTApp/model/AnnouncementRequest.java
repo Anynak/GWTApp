@@ -57,4 +57,15 @@ public class AnnouncementRequest {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    @Override
+    public String toString() {
+        return "AnnouncementRequest{" +
+                "announcementId=" + announcementId +
+                ", vehicle=" + vehicle +
+                ", price=" + price +
+                ", currency='" + currency + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }

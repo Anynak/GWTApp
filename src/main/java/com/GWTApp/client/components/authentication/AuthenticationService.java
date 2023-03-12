@@ -1,6 +1,7 @@
 package com.GWTApp.client.components.authentication;
 
 
+import com.GWTApp.client.repositories.AuthenticationRepository;
 import com.GWTApp.client.storage.SecurityStorage;
 import com.GWTApp.client.storage.entity.Token;
 import com.GWTApp.model.LoginEntity;
@@ -21,7 +22,7 @@ public class AuthenticationService {
         repository.loginUser(loginEntity, new MethodCallback<Token>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
-                loginFormView.showError(method);
+                loginFormView.handleError(method);
             }
 
             @Override

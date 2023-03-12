@@ -1,14 +1,13 @@
-package com.GWTApp.client.components.announcementForm;
+package com.GWTApp.client.repositories;
 
 import com.GWTApp.model.AnnouncementRequest;
 import com.GWTApp.model.AnnouncementResponse;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import java.util.List;
+
 //https://stackoverflow.com/questions/13968261/required-queryparam-in-jax-rs-and-what-to-do-in-their-absence
 @Path("/api/announcements/v1")
 public interface AnnouncementRepository extends RestService {
@@ -19,6 +18,7 @@ public interface AnnouncementRepository extends RestService {
 
     @GET
     void getAnnouncements(@HeaderParam("Authorization") String token,
-                         AnnouncementResponse announcementResponse,
-                         MethodCallback<AnnouncementRequest> methodCallback);
+                          @QueryParam("pageNumber") Integer pageNumber,
+                          @QueryParam("pageSize") Integer pageSize,
+                          MethodCallback<List<AnnouncementRequest>> methodCallback);
 }

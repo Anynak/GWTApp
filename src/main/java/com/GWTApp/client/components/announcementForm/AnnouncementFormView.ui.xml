@@ -5,16 +5,17 @@
         <g:ListBox ui:field="models"/>
 
         <g:Label text="release year"/>
-        <g:TextBox ui:field='releaseYearTextBox' title="releaseYear"/>
+        <g:IntegerBox ui:field='releaseYearIntBox' title="releaseYear"/>
         <g:Label text="color"/>
         <g:TextBox ui:field='colorTextBox' title="releaseYear"/>
         <g:Label text="mileage"/>
-        <g:TextBox ui:field='mileageTextBox' title="mileage"/>
+        <g:IntegerBox ui:field='mileageIntBox' title="mileage"/>
         <g:Label text="price"/>
-        <g:TextBox ui:field='priceTextBox' title="price"/>
+        <g:DoubleBox ui:field='priceDoubleBox' title="price"/>
         <g:Label text="comment"/>
-        <g:TextBox ui:field='commentTextBox' title="comment"/>
+        <g:TextArea ui:field='commentTextArea' title="comment"/>
         <g:Button ui:field="submitBtn" text="submit"/>
+
     </g:VerticalPanel>
 
 

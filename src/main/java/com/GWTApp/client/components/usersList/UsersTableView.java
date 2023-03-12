@@ -34,6 +34,7 @@ public class UsersTableView extends Composite {
 
 
     }
+
     public void handleError(Method method) {
         this.parentView.handleError(method);
     }

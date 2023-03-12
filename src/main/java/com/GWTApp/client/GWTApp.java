@@ -1,5 +1,6 @@
 package com.GWTApp.client;
 
+import com.GWTApp.client.components.apierror.ApiErrorView;
 import com.GWTApp.client.components.authentication.LoginFormView;
 import com.GWTApp.client.components.mainPage.MainPageView;
 import com.GWTApp.client.components.registration.RegistrationFormView;
@@ -8,7 +9,9 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.fusesource.restygwt.client.Defaults;
+import org.fusesource.restygwt.client.Method;
 //https://javastudy.ru/category/gwt/
+
 /**
  * Entry point classes define <code>onModuleLoad()</code>
  */
@@ -47,6 +50,18 @@ public class GWTApp implements EntryPoint {
         flexTable.setWidget(1, 0, mainView);
         mainView.showMainPage();
 
+    }
+
+    public void handleError(Method method) {
+
+        ApiErrorView apiErrorView = new ApiErrorView();
+
+        if (method.getResponse().getStatusCode() == 401) {
+            showLoginPage();
+        }
+        apiErrorView.setMethod(method);
+        flexTable.setWidget(0, 0, apiErrorView);
+        apiErrorView.show();
     }
 
 }
