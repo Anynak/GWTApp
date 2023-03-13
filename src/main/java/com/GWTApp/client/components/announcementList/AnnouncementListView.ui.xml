@@ -2,5 +2,6 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <g:VerticalPanel ui:field="mainPanel">
         <g:Label text="Announcements"/>
+        <g:FlexTable ui:field="announcementTable"/>
     </g:VerticalPanel>
 </ui:UiBinder>

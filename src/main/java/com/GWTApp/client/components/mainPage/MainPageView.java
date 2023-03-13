@@ -9,7 +9,9 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import org.fusesource.restygwt.client.Method;
+//import org.jboss.errai.ui.nav.client.local.Page;
 
+//@Page(path="main")
 public class MainPageView extends Composite {
     private static final MainViewUiBinder ourUiBinder = GWT.create(MainViewUiBinder.class);
     private final GWTApp parentView;
@@ -19,12 +21,14 @@ public class MainPageView extends Composite {
     public MainPageView(GWTApp gwtApp) {
         this.parentView = gwtApp;
         initWidget(ourUiBinder.createAndBindUi(this));
+        //showMainPage();
     }
 
     //private final ApiErrorView apiErrorView = new ApiErrorView();
     public void handleError(Method method) {
         parentView.handleError(method);
     }
+
 
     public void showMainPage() {
         //AnnouncementFormView announcementFormView = new AnnouncementFormView(this);

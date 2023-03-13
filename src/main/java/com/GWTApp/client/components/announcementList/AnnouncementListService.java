@@ -4,6 +4,7 @@ import com.GWTApp.client.repositories.AnnouncementRepository;
 import com.GWTApp.client.storage.SecurityStorage;
 import com.GWTApp.model.AnnouncementRequest;
 import com.GWTApp.model.PageCriteria;
+import com.GWTApp.model.SearchAnnouncementCriteria;
 import com.google.gwt.core.client.GWT;
 import org.fusesource.restygwt.client.Method;
 import org.fusesource.restygwt.client.MethodCallback;
@@ -20,11 +21,19 @@ public class AnnouncementListService {
         this.announcementRepository = GWT.create(AnnouncementRepository.class);
     }
 
-    public void loadAnnouncements(PageCriteria pageCriteria) {
+    public void loadAnnouncements(PageCriteria pageCriteria, SearchAnnouncementCriteria announcementCriteria) {
         announcementRepository.getAnnouncements(SecurityStorage.getAccessToken(),
                 pageCriteria.getPageNumber(),
                 pageCriteria.getPageSize(),
-
+                announcementCriteria.getPriceMin(),
+                announcementCriteria.getPriceMax(),
+                announcementCriteria.getMileageMin(),
+                announcementCriteria.getMileageMax(),
+                announcementCriteria.getReleaseYearMin(),
+                announcementCriteria.getReleaseYearMax(),
+                announcementCriteria.getColor(),
+                announcementCriteria.getVehicleBrandName(),
+                announcementCriteria.getVehicleModelName(),
                 new MethodCallback<List<AnnouncementRequest>>() {
 
                     @Override

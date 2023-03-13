@@ -59,47 +59,19 @@
             <version>2.10.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.fusesource.restygwt/restygwt -->
 
-
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.github.gwtmaterialdesign/gwt-material -->
         <dependency>
             <groupId>com.github.gwtmaterialdesign</groupId>
             <artifactId>gwt-material</artifactId>
             <version>2.6.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.gwtmaterialdesign/gwt-material-addins -->
-        <dependency>
-            <groupId>com.github.gwtmaterialdesign</groupId>
-            <artifactId>gwt-material-addins</artifactId>
-            <version>2.6.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.gwtmaterialdesign/gwt-material-themes -->
-        <dependency>
-            <groupId>com.github.gwtmaterialdesign</groupId>
-            <artifactId>gwt-material-themes</artifactId>
-            <version>2.6.1</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 
-        <!-- https://mvnrepository.com/artifact/com.google.jsinterop/jsinterop -->
-        <!-- https://mvnrepository.com/artifact/com.google.jsinterop/jsinterop -->
-        <!-- https://mvnrepository.com/artifact/com.github.nmorel.gwtjackson/gwt-jackson -->
         <dependency>
             <groupId>com.github.nmorel.gwtjackson</groupId>
             <artifactId>gwt-jackson</artifactId>
             <version>0.15.4</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.gwtreact/gwt-interop-utils -->
-        <!-- https://mvnrepository.com/artifact/com.github.gwtreact/gwt-interop-utils -->
+
         <dependency>
             <groupId>com.github.gwtreact</groupId>
             <artifactId>gwt-interop-utils</artifactId>

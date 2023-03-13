@@ -20,5 +20,14 @@ public interface AnnouncementRepository extends RestService {
     void getAnnouncements(@HeaderParam("Authorization") String token,
                           @QueryParam("pageNumber") Integer pageNumber,
                           @QueryParam("pageSize") Integer pageSize,
+                          @QueryParam("priceMin") Float priceMin,
+                          @QueryParam("priceMax") Float priceMax,
+                          @QueryParam("mileageMin") Integer mileageMin,
+                          @QueryParam("mileageMax") Integer mileageMax,
+                          @QueryParam("releaseYearMin") Integer releaseYearMin,
+                          @QueryParam("releaseYearMax") Integer releaseYearMax,
+                          @QueryParam("color") String color,
+                          @QueryParam("vehicleBrandName") String vehicleBrandName,
+                          @QueryParam("vehicleModelName") String vehicleModelName,
                           MethodCallback<List<AnnouncementRequest>> methodCallback);
 }
