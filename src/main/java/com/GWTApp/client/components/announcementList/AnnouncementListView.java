@@ -20,31 +20,44 @@ public class AnnouncementListView extends Composite {
     private final MainPageView parentView;
     @UiField
     HorizontalPanel mainPanel;
-    @UiField
-    VerticalPanel listPanel;
+    //@UiField
+    VerticalPanel listPanel = new VerticalPanel();
 
-
+    AnnouncementListService announcementListService = new AnnouncementListService(this);
 
 
     public AnnouncementListView(MainPageView parentView) {
-        this.parentView = parentView;
-        initWidget(ourUiBinder.createAndBindUi(this));
 
+        this.parentView = parentView;
+
+        initWidget(ourUiBinder.createAndBindUi(this));
         mainPanel.add(new AnnouncementSearchCriteriaView(this));
-        AnnouncementListService announcementListService = new AnnouncementListService(this);
+        mainPanel.add(listPanel);
         announcementListService.loadAnnouncements(new PageCriteria(), new SearchAnnouncementCriteria());
+
     }
 
     public void findAnnouncements(PageCriteria pageCriteria, SearchAnnouncementCriteria announcementCriteria){
-
+        announcementListService.loadAnnouncements(pageCriteria, announcementCriteria);
     }
 
-    public void fillAnnouncementList(List<AnnouncementRequest> announcements) {
-
+    public void show(List<AnnouncementRequest> announcements){
+        listPanel.clear();
+        listPanel.add(new Label("Announcements"));
         for (AnnouncementRequest ar : announcements) {
             listPanel.add(new Label(ar.getComment() + " - " + ar.getPrice() + " " + ar.getCurrency()));
         }
+
+
+
+
     }
+    //public void fillAnnouncementList(List<AnnouncementRequest> announcements) {
+//
+    //    for (AnnouncementRequest ar : announcements) {
+    //        listPanel.add(new Label(ar.getComment() + " - " + ar.getPrice() + " " + ar.getCurrency()));
+    //    }
+    //}
 
     public void handleError(Method method) {
         this.parentView.handleError(method);

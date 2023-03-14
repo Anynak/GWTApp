@@ -1,5 +1,6 @@
 package com.GWTApp.client.repositories;
 
+import com.GWTApp.client.storage.entity.AuthDetails;
 import com.GWTApp.client.storage.entity.Token;
 import com.GWTApp.model.LoginEntity;
 import org.fusesource.restygwt.client.MethodCallback;
@@ -12,5 +13,5 @@ import javax.ws.rs.Path;
 public interface AuthenticationRepository extends RestService {
     @POST
     @Path("/v1/login")
-    void loginUser(LoginEntity loginEntity, MethodCallback<Token> methodCallback);
+    void loginUser(LoginEntity loginEntity, MethodCallback<AuthDetails> methodCallback);
 }

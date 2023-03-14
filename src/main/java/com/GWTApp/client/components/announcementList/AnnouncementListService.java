@@ -38,8 +38,7 @@ public class AnnouncementListService {
 
                     @Override
                     public void onSuccess(Method method, List<AnnouncementRequest> announcements) {
-                        announcementListView.fillAnnouncementList(announcements);
-
+                        announcementListView.show(announcements);
                     }
 
                     @Override

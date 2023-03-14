@@ -1,30 +1,57 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <g:VerticalPanel ui:field="mainPanel">
-        <g:Label text="search settings"/>
-        <g:HorizontalPanel>
-            <g:Label text="min price"/>
-            <g:DoubleBox ui:field='minPriceDoubleBox' title="min price"/>
-            <g:Label text="max price"/>
-            <g:DoubleBox ui:field='maxPriceDoubleBox' title="max price"/>
+    <g:VerticalPanel ui:field="mainPanel" spacing="10">
+        <g:Label text="search"/>
+
+        <g:HorizontalPanel >
+            <g:VerticalPanel>
+                <g:Label text="min price"/>
+                <g:DoubleBox ui:field='minPriceDoubleBox' title="min price"/>
+            </g:VerticalPanel>
+            <g:VerticalPanel>
+                <g:Label text="max price"/>
+                <g:DoubleBox ui:field='maxPriceDoubleBox' title="max price"/>
+            </g:VerticalPanel>
         </g:HorizontalPanel>
-        <g:Label text="brand"/>
-        <g:TextBox ui:field='brandNameTextBox' title="brand"/>
-        <g:Label text="model"/>
-        <g:TextBox ui:field='modelNameTextBox' title="model"/>
+
+        <g:VerticalPanel>
+            <g:Label text="brand"/>
+            <g:TextBox ui:field='brandNameTextBox' title="brand" width='195%'/>
+        </g:VerticalPanel>
+
+        <g:VerticalPanel>
+            <g:Label text="model"/>
+            <g:TextBox ui:field='modelNameTextBox' title="model" width='195%'/>
+        </g:VerticalPanel>
+
         <g:HorizontalPanel>
-            <g:Label text="min release year"/>
-            <g:IntegerBox ui:field='releaseYearMinIntBox' title="min release year"/>
-            <g:Label text="max release year"/>
-            <g:IntegerBox ui:field='releaseYearMaxIntBox' title="max release year"/>
+            <g:VerticalPanel>
+                <g:Label text="min release year"/>
+                <g:IntegerBox ui:field='releaseYearMinIntBox' title="min release year"/>
+            </g:VerticalPanel>
+            <g:VerticalPanel>
+                <g:Label text="max release year"/>
+                <g:IntegerBox ui:field='releaseYearMaxIntBox' title="max release year"/>
+            </g:VerticalPanel>
         </g:HorizontalPanel>
+
         <g:HorizontalPanel>
-            <g:Label text="min mileage"/>
-            <g:IntegerBox ui:field='mileageMinIntBox' title="min mileage"/>
-            <g:Label text="max mileage"/>
-            <g:IntegerBox ui:field='mileageMaxIntBox' title="max mileage"/>
+            <g:VerticalPanel>
+                <g:Label text="min mileage"/>
+                <g:IntegerBox ui:field='mileageMinIntBox' title="min mileage"/>
+            </g:VerticalPanel>
+            <g:VerticalPanel>
+                <g:Label text="max mileage"/>
+                <g:IntegerBox ui:field='mileageMaxIntBox' title="max mileage"/>
+            </g:VerticalPanel>
         </g:HorizontalPanel>
-        <g:Label text="color"/>
-        <g:TextBox ui:field='colorTextBox' title="color"/>
+
+        <g:VerticalPanel width='100'>
+            <g:Label text="color"/>
+            <g:TextBox ui:field='colorTextBox' title="color" width='195'/>
+        </g:VerticalPanel>
+
+        <g:Button ui:field="submitBtn" text="Search"/>
+
     </g:VerticalPanel>
 </ui:UiBinder>

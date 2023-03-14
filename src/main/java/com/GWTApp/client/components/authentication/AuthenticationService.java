@@ -3,6 +3,7 @@ package com.GWTApp.client.components.authentication;
 
 import com.GWTApp.client.repositories.AuthenticationRepository;
 import com.GWTApp.client.storage.SecurityStorage;
+import com.GWTApp.client.storage.entity.AuthDetails;
 import com.GWTApp.client.storage.entity.Token;
 import com.GWTApp.model.LoginEntity;
 import com.google.gwt.core.client.GWT;
@@ -19,15 +20,15 @@ public class AuthenticationService {
     }
 
     public void authUser(LoginEntity loginEntity) {
-        repository.loginUser(loginEntity, new MethodCallback<Token>() {
+        repository.loginUser(loginEntity, new MethodCallback<AuthDetails>() {
             @Override
             public void onFailure(Method method, Throwable throwable) {
                 loginFormView.handleError(method);
             }
 
             @Override
-            public void onSuccess(Method method, Token token) {
-                SecurityStorage.setAccessToken(token);
+            public void onSuccess(Method method, AuthDetails authDetails) {
+                SecurityStorage.saveAuthDetails(authDetails);
                 loginFormView.onLoginSuccess();
             }
         });
