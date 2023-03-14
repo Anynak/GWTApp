@@ -4,7 +4,6 @@ package com.GWTApp.client.components.authentication;
 import com.GWTApp.client.repositories.AuthenticationRepository;
 import com.GWTApp.client.storage.SecurityStorage;
 import com.GWTApp.client.storage.entity.AuthDetails;
-import com.GWTApp.client.storage.entity.Token;
 import com.GWTApp.model.LoginEntity;
 import com.google.gwt.core.client.GWT;
 import org.fusesource.restygwt.client.Method;

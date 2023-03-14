@@ -9,7 +9,8 @@
     <inherits name="org.fusesource.restygwt.RestyGWT"/>
     <inherits name="com.github.nmorel.gwtjackson.GwtJackson"/>
     <inherits name="gwt.interop.utils.InteropUtils"/>
-    <inherits name="com.google.web.bindery.autobean.AutoBean"/>
+    <inherits name="com.google.gwt.logging.Logging"/>
+
     <!--<inherits name="gwt.material.design.Resources"/>-->
 
 

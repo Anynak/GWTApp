@@ -8,7 +8,10 @@ import com.GWTApp.model.SearchAnnouncementCriteria;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import org.fusesource.restygwt.client.Method;
 
 import java.util.List;
@@ -37,27 +40,19 @@ public class AnnouncementListView extends Composite {
 
     }
 
-    public void findAnnouncements(PageCriteria pageCriteria, SearchAnnouncementCriteria announcementCriteria){
+    public void findAnnouncements(PageCriteria pageCriteria, SearchAnnouncementCriteria announcementCriteria) {
         announcementListService.loadAnnouncements(pageCriteria, announcementCriteria);
     }
 
-    public void show(List<AnnouncementRequest> announcements){
+    public void show(List<AnnouncementRequest> announcements) {
         listPanel.clear();
         listPanel.add(new Label("Announcements"));
         for (AnnouncementRequest ar : announcements) {
             listPanel.add(new Label(ar.getComment() + " - " + ar.getPrice() + " " + ar.getCurrency()));
         }
 
-
-
-
     }
-    //public void fillAnnouncementList(List<AnnouncementRequest> announcements) {
-//
-    //    for (AnnouncementRequest ar : announcements) {
-    //        listPanel.add(new Label(ar.getComment() + " - " + ar.getPrice() + " " + ar.getCurrency()));
-    //    }
-    //}
+
 
     public void handleError(Method method) {
         this.parentView.handleError(method);

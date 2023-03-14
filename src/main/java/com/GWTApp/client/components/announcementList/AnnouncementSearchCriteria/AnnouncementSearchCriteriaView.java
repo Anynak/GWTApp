@@ -55,8 +55,10 @@ public class AnnouncementSearchCriteriaView extends Composite {
         announcementCriteria.setVehicleBrandName(brandNameTextBox.getValue());
         announcementCriteria.setMileageMax(mileageMaxIntBox.getValue());
         announcementCriteria.setMileageMin(mileageMinIntBox.getValue());
-        if(minPriceDoubleBox.getValue()!=null) announcementCriteria.setPriceMin(minPriceDoubleBox.getValue().floatValue());
-        if(maxPriceDoubleBox.getValue()!=null) announcementCriteria.setPriceMax(maxPriceDoubleBox.getValue().floatValue());
+        if (minPriceDoubleBox.getValue() != null)
+            announcementCriteria.setPriceMin(minPriceDoubleBox.getValue().floatValue());
+        if (maxPriceDoubleBox.getValue() != null)
+            announcementCriteria.setPriceMax(maxPriceDoubleBox.getValue().floatValue());
         announcementCriteria.setColor(colorTextBox.getValue());
         announcementCriteria.setReleaseYearMin(releaseYearMinIntBox.getValue());
         announcementCriteria.setReleaseYearMax(releaseYearMaxIntBox.getValue());

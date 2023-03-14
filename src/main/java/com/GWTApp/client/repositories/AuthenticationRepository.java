@@ -1,7 +1,6 @@
 package com.GWTApp.client.repositories;
 
 import com.GWTApp.client.storage.entity.AuthDetails;
-import com.GWTApp.client.storage.entity.Token;
 import com.GWTApp.model.LoginEntity;
 import org.fusesource.restygwt.client.MethodCallback;
 import org.fusesource.restygwt.client.RestService;

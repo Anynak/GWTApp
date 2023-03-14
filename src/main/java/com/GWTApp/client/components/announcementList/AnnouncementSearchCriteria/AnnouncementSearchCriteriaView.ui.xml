@@ -3,7 +3,7 @@
     <g:VerticalPanel ui:field="mainPanel" spacing="10">
         <g:Label text="search"/>
 
-        <g:HorizontalPanel >
+        <g:HorizontalPanel>
             <g:VerticalPanel>
                 <g:Label text="min price"/>
                 <g:DoubleBox ui:field='minPriceDoubleBox' title="min price"/>
