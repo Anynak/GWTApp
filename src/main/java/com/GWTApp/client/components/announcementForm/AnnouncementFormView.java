@@ -40,6 +40,9 @@ public class AnnouncementFormView extends Composite {
     @UiField
     Button submitBtn;
 
+    @UiField
+    Button homeBtn;
+
     public AnnouncementFormView(MainPageView mainPageView) {
 
         this.parentView = mainPageView;
@@ -47,10 +50,15 @@ public class AnnouncementFormView extends Composite {
         mainPanel.add(apiErrorView);
         this.submitBtn.addClickHandler(clickEvent -> sendAnnouncement());
 
+        this.homeBtn.addClickHandler(clickEvent -> toHomePage());
         initBrands();
         initModels();
 
 
+    }
+
+    private void toHomePage() {
+        this.parentView.showMainPage();
     }
 
     public void handleError(Method method) {

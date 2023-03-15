@@ -8,10 +8,7 @@ import com.GWTApp.model.SearchAnnouncementCriteria;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.*;
 import org.fusesource.restygwt.client.Method;
 
 import java.util.List;
@@ -23,7 +20,7 @@ public class AnnouncementListView extends Composite {
     private final MainPageView parentView;
     @UiField
     HorizontalPanel mainPanel;
-    //@UiField
+
     VerticalPanel listPanel = new VerticalPanel();
 
     AnnouncementListService announcementListService = new AnnouncementListService(this);
@@ -36,12 +33,20 @@ public class AnnouncementListView extends Composite {
         initWidget(ourUiBinder.createAndBindUi(this));
         mainPanel.add(new AnnouncementSearchCriteriaView(this));
         mainPanel.add(listPanel);
+        Button addAnnouncement = new Button();
+        addAnnouncement.setText("ADD");
+        mainPanel.add(addAnnouncement);
+        addAnnouncement.addClickHandler(clickEvent -> addAnnouncement());
         announcementListService.loadAnnouncements(new PageCriteria(), new SearchAnnouncementCriteria());
 
     }
 
     public void findAnnouncements(PageCriteria pageCriteria, SearchAnnouncementCriteria announcementCriteria) {
         announcementListService.loadAnnouncements(pageCriteria, announcementCriteria);
+    }
+
+    private void addAnnouncement() {
+        parentView.showAnnouncementForm();
     }
 
     public void show(List<AnnouncementRequest> announcements) {
