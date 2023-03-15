@@ -1,6 +1,7 @@
 package com.GWTApp.client.components.authentication;
 
 import com.GWTApp.client.GWTApp;
+import com.GWTApp.client.components.apierror.ApiErrorView;
 import com.GWTApp.model.LoginEntity;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -45,7 +46,9 @@ public class LoginFormView extends Composite {
     }
 
     public void handleError(Method method) {
-        parentView.handleError(method);
+        ApiErrorView apiErrorView = new ApiErrorView();
+        mainPanel.add(apiErrorView);
+        apiErrorView.show(method);
     }
 
     public void onLoginSuccess() {

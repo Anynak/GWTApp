@@ -45,11 +45,6 @@ public class AnnouncementListService {
                     public void onFailure(Method method, Throwable throwable) {
 
                         announcementListView.handleError(method);
-                        try {
-                            throw throwable;
-                        } catch (Throwable e) {
-                            throw new RuntimeException(e);
-                        }
 
                     }
 

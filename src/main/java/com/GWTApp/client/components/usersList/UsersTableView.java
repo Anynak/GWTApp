@@ -21,7 +21,6 @@ public class UsersTableView extends Composite {
 
     private static final UserResponseViewUiBinder ourUiBinder = GWT.create(UserResponseViewUiBinder.class);
     private final MainPageView parentView;
-    private final ApiErrorView apiErrorView = new ApiErrorView();
 
     @UiField
     FlexTable flexTable = new FlexTable();
@@ -32,11 +31,16 @@ public class UsersTableView extends Composite {
         UsersTableService tableService = new UsersTableService(this);
         tableService.fillTable(1, 10, "name", true, "", "");
 
-
     }
 
     public void handleError(Method method) {
-        this.parentView.handleError(method);
+        if (method.getResponse().getStatusCode() == 401) {
+            parentView.handleAuthError(method);
+        } else {
+            ApiErrorView apiErrorView = new ApiErrorView();
+            flexTable.setWidget(1, 1, apiErrorView);
+            apiErrorView.show(method);
+        }
     }
 
     public void setUsers(List<UserRequest> users) {
@@ -66,7 +70,7 @@ public class UsersTableView extends Composite {
                 return userRequest.getCountry() + " " + userRequest.getCity();
             }
         };
-        //nameCol.setSortable(true);
+
         table.addColumn(locationCol, "location");
         table.addColumn(emailCol, "email");
         table.addColumn(phoneCol, "phone number");

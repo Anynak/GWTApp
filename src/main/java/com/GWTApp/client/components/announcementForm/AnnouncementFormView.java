@@ -18,7 +18,6 @@ import java.util.Objects;
 //https://stackoverflow.com/questions/22629632/gwt-listbox-onchangehandler
 public class AnnouncementFormView extends Composite {
     private static final AnnouncementFormUiBinder ourUiBinder = GWT.create(AnnouncementFormUiBinder.class);
-    private final ApiErrorView apiErrorView = new ApiErrorView();
     private final MainPageView parentView;
     private final AnnouncementFormService announcementFormService = new AnnouncementFormService(this);
     @UiField
@@ -47,13 +46,10 @@ public class AnnouncementFormView extends Composite {
 
         this.parentView = mainPageView;
         initWidget(ourUiBinder.createAndBindUi(this));
-        mainPanel.add(apiErrorView);
         this.submitBtn.addClickHandler(clickEvent -> sendAnnouncement());
-
         this.homeBtn.addClickHandler(clickEvent -> toHomePage());
         initBrands();
         initModels();
-
 
     }
 
@@ -62,13 +58,14 @@ public class AnnouncementFormView extends Composite {
     }
 
     public void handleError(Method method) {
-        this.parentView.handleError(method);
-
+        ApiErrorView apiErrorView = new ApiErrorView();
+        mainPanel.add(apiErrorView);
+        apiErrorView.show(method);
     }
 
     private void initBrands() {
         brands.addItem("select brand", "-1");
-        brands.addChangeHandler((changeEvent) -> {
+        brands.addChangeHandler(changeEvent -> {
             announcementFormService.setModels(Long.valueOf(brands.getSelectedValue()));
             models.setVisible(true);
             if (Objects.equals(brands.getValue(0), "-1")) brands.removeItem(0);
@@ -95,8 +92,12 @@ public class AnnouncementFormView extends Composite {
 
     private void sendAnnouncement() {
         announcementFormService.sendAnnouncement(buildAnnouncement());
-        parentView.showMainPage();
 
+
+    }
+
+    public void sendSuccess() {
+        parentView.showMainPage();
     }
 
     private AnnouncementResponse buildAnnouncement() {

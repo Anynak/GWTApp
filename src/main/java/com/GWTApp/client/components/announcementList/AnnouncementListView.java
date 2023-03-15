@@ -1,12 +1,12 @@
 package com.GWTApp.client.components.announcementList;
 
 import com.GWTApp.client.components.announcementList.AnnouncementSearchCriteria.AnnouncementSearchCriteriaView;
+import com.GWTApp.client.components.apierror.ApiErrorView;
 import com.GWTApp.client.components.mainPage.MainPageView;
 import com.GWTApp.model.AnnouncementRequest;
 import com.GWTApp.model.PageCriteria;
 import com.GWTApp.model.SearchAnnouncementCriteria;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
@@ -66,8 +66,14 @@ public class AnnouncementListView extends Composite {
 
 
     public void handleError(Method method) {
-        this.parentView.handleError(method);
 
+        if (method.getResponse().getStatusCode() == 401) {
+            parentView.handleAuthError(method);
+        } else {
+            ApiErrorView apiErrorView = new ApiErrorView();
+            listPanel.add(apiErrorView);
+            apiErrorView.show(method);
+        }
     }
 
     interface AnnouncementListUiBinder extends UiBinder<HorizontalPanel, AnnouncementListView> {

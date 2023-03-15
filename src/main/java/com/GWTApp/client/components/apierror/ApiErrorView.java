@@ -16,20 +16,17 @@ public class ApiErrorView extends Composite {
     private static final ApiErrorViewUiBinder ourUiBinder = GWT.create(ApiErrorViewUiBinder.class);
     @UiField
     HTML errorText;
-    private Method method;
+
 
     public ApiErrorView() {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 
-    public void setMethod(Method method) {
-        this.method = method;
-    }
 
-    public void show() {
+    public void show(Method method) {
 
-        String errorMessage = this.method.getResponse().getText();
-//
+        String errorMessage = method.getResponse().getText();
+
         try {
             JSONValue apiError = JSONParser.parseStrict(errorMessage);
             JSONArray errors = apiError.isArray();
@@ -39,10 +36,14 @@ public class ApiErrorView extends Composite {
                 errorMessages.append("<br />");
             }
             errorText.setHTML(errorMessages.toString());
-//
+
         } catch (Exception e) {
             errorText.setText(method.getResponse().getText());
         }
+    }
+
+    public void clear() {
+        errorText.setText("");
     }
 
     interface ApiErrorViewUiBinder extends UiBinder<HTML, ApiErrorView> {

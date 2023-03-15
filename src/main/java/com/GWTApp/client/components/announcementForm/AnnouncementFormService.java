@@ -67,7 +67,7 @@ public class AnnouncementFormService {
 
             @Override
             public void onSuccess(Method method, AnnouncementRequest announcementRequest) {
-
+                announcementFormView.sendSuccess();
             }
 
         });

@@ -1,6 +1,7 @@
 package com.GWTApp.client.components.announcementList.AnnouncementSearchCriteria;
 
 import com.GWTApp.client.components.announcementList.AnnouncementListView;
+import com.GWTApp.client.components.apierror.ApiErrorView;
 import com.GWTApp.model.PageCriteria;
 import com.GWTApp.model.SearchAnnouncementCriteria;
 import com.google.gwt.core.client.GWT;
@@ -66,7 +67,9 @@ public class AnnouncementSearchCriteriaView extends Composite {
     }
 
     public void handleError(Method method) {
-        this.parentView.handleError(method);
+        ApiErrorView apiErrorView = new ApiErrorView();
+        mainPanel.add(apiErrorView);
+        apiErrorView.show(method);
 
     }
 
