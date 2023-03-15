@@ -6,6 +6,7 @@ import com.GWTApp.model.AnnouncementRequest;
 import com.GWTApp.model.PageCriteria;
 import com.GWTApp.model.SearchAnnouncementCriteria;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
@@ -50,9 +51,14 @@ public class AnnouncementListView extends Composite {
     }
 
     public void show(List<AnnouncementRequest> announcements) {
+        listPanel.setSpacing(20);
+        listPanel.setBorderWidth(1);
+        listPanel.setWidth("600px");
         listPanel.clear();
-        listPanel.add(new Label("Announcements"));
+        listPanel.add(new Label("Announcements:"));
         for (AnnouncementRequest ar : announcements) {
+            Label label = new Label(ar.getComment() + " - " + ar.getPrice() + " " + ar.getCurrency());
+            label.setHeight("50px");
             listPanel.add(new Label(ar.getComment() + " - " + ar.getPrice() + " " + ar.getCurrency()));
         }
 

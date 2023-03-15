@@ -35,6 +35,7 @@ public class GWTApp implements EntryPoint {
             showMainPage();
         }
 
+        flexTable.setBorderWidth(1);
         //LoginFormView loginFormView = new LoginFormView(this);
         //RegistrationFormView registrationFormView = new RegistrationFormView(this);
         //MainPageView mainView = new MainPageView(this);
