@@ -1,5 +1,6 @@
 package com.GWTApp.client;
 
+import com.GWTApp.client.components.announcementForm.AnnouncementFormView;
 import com.GWTApp.client.components.apierror.ApiErrorView;
 import com.GWTApp.client.components.authentication.LoginFormView;
 import com.GWTApp.client.components.mainPage.MainPageView;
@@ -49,10 +50,16 @@ public class GWTApp implements EntryPoint {
     public void showMainPage() {
         MainPageView mainView = new MainPageView(this);
         flexTable.setWidget(1, 0, mainView);
-        mainView.showMainPage();
+        //mainView.showMainPage();
 
     }
 
+    public void showAnnouncementForm() {
+        AnnouncementFormView announcementFormView = new AnnouncementFormView(this);
+        flexTable.setWidget(1, 0, announcementFormView);
+
+
+    }
 
     public void handleError(Method method) {
         ApiErrorView apiErrorView = new ApiErrorView();

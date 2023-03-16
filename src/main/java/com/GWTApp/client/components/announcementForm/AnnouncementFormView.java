@@ -1,7 +1,7 @@
 package com.GWTApp.client.components.announcementForm;
 
+import com.GWTApp.client.GWTApp;
 import com.GWTApp.client.components.apierror.ApiErrorView;
-import com.GWTApp.client.components.mainPage.MainPageView;
 import com.GWTApp.model.AnnouncementResponse;
 import com.GWTApp.model.Vehicle;
 import com.GWTApp.model.VehicleBrand;
@@ -18,7 +18,7 @@ import java.util.Objects;
 //https://stackoverflow.com/questions/22629632/gwt-listbox-onchangehandler
 public class AnnouncementFormView extends Composite {
     private static final AnnouncementFormUiBinder ourUiBinder = GWT.create(AnnouncementFormUiBinder.class);
-    private final MainPageView parentView;
+    private final GWTApp parentView;
     private final AnnouncementFormService announcementFormService = new AnnouncementFormService(this);
     @UiField
     VerticalPanel mainPanel;
@@ -42,7 +42,7 @@ public class AnnouncementFormView extends Composite {
     @UiField
     Button homeBtn;
 
-    public AnnouncementFormView(MainPageView mainPageView) {
+    public AnnouncementFormView(GWTApp mainPageView) {
 
         this.parentView = mainPageView;
         initWidget(ourUiBinder.createAndBindUi(this));

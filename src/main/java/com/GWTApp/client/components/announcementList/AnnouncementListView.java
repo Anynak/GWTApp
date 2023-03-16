@@ -21,8 +21,16 @@ public class AnnouncementListView extends Composite {
     private final MainPageView parentView;
     @UiField
     HorizontalPanel mainPanel;
+    @UiField
+    VerticalPanel listPanel;
 
-    VerticalPanel listPanel = new VerticalPanel();
+    @UiField
+    VerticalPanel list;
+
+    @UiField
+    Button addAnnouncementBtn;
+    @UiField
+    HTMLPanel search;
 
     AnnouncementListService announcementListService = new AnnouncementListService(this);
 
@@ -30,14 +38,9 @@ public class AnnouncementListView extends Composite {
     public AnnouncementListView(MainPageView parentView) {
 
         this.parentView = parentView;
-
         initWidget(ourUiBinder.createAndBindUi(this));
-        mainPanel.add(new AnnouncementSearchCriteriaView(this));
-        mainPanel.add(listPanel);
-        Button addAnnouncement = new Button();
-        addAnnouncement.setText("ADD");
-        mainPanel.add(addAnnouncement);
-        addAnnouncement.addClickHandler(clickEvent -> addAnnouncement());
+        search.add(new AnnouncementSearchCriteriaView(this));
+        addAnnouncementBtn.addClickHandler(clickEvent -> addAnnouncement());
         announcementListService.loadAnnouncements(new PageCriteria(), new SearchAnnouncementCriteria());
 
     }
@@ -51,15 +54,12 @@ public class AnnouncementListView extends Composite {
     }
 
     public void show(List<AnnouncementRequest> announcements) {
-        listPanel.setSpacing(20);
-        listPanel.setBorderWidth(1);
-        listPanel.setWidth("600px");
-        listPanel.clear();
-        listPanel.add(new Label("Announcements:"));
+        list.clear();
         for (AnnouncementRequest ar : announcements) {
-            Label label = new Label(ar.getComment() + " - " + ar.getPrice() + " " + ar.getCurrency());
-            label.setHeight("50px");
-            listPanel.add(new Label(ar.getComment() + " - " + ar.getPrice() + " " + ar.getCurrency()));
+            Label label = new Label(ar.getVehicle().getVehicleModel().getVehicleBrand().getVehicleBrandName()
+                    + " (" + ar.getVehicle().getVehicleModel().getVehicleModelName() + ")" + " - " + ar.getPrice() + " " + ar.getCurrency());
+            label.setHeight("30px");
+            list.add(label);
         }
 
     }

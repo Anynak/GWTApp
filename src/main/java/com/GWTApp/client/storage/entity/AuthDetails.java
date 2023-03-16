@@ -29,6 +29,10 @@ public class AuthDetails implements Serializable {
 
     }
 
+    public boolean isAdmin() {
+        return this.roles.contains("ADMIN");
+    }
+
     public static String toJson(AuthDetails authDetails) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("accessToken", new JSONString(authDetails.accessToken));
