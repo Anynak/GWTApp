@@ -7,6 +7,7 @@ import com.GWTApp.client.components.mainPage.MainPageView;
 import com.GWTApp.client.components.registration.RegistrationFormView;
 import com.GWTApp.client.storage.SecurityStorage;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.RootPanel;
 import org.fusesource.restygwt.client.Defaults;
@@ -25,6 +26,7 @@ public class GWTApp implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
+
         Defaults.setServiceRoot("http://127.0.0.1:8080/");
         RootPanel.get("content").add(flexTable);
         if (SecurityStorage.getAccessToken() == null) {
@@ -33,32 +35,37 @@ public class GWTApp implements EntryPoint {
             showMainPage();
         }
 
-        flexTable.setBorderWidth(1);
+        flexTable.setBorderWidth(6);
 
+    }
+
+    private void drawComponent(Composite component) {
+        flexTable.setWidget(1, 1, component);
+    }
+
+    private void drawError(Composite error) {
+        flexTable.setWidget(0, 0, error);
     }
 
     public void showLoginPage() {
         LoginFormView loginFormView = new LoginFormView(this);
-        flexTable.setWidget(1, 0, loginFormView);
+        drawComponent(loginFormView);
     }
 
     public void showRegisterPage() {
         RegistrationFormView registrationFormView = new RegistrationFormView(this);
-        flexTable.setWidget(1, 0, registrationFormView);
+        drawComponent(registrationFormView);
     }
 
     public void showMainPage() {
         MainPageView mainView = new MainPageView(this);
-        flexTable.setWidget(1, 0, mainView);
-        //mainView.showMainPage();
+        drawComponent(mainView);
 
     }
 
     public void showAnnouncementForm() {
         AnnouncementFormView announcementFormView = new AnnouncementFormView(this);
-        flexTable.setWidget(1, 0, announcementFormView);
-
-
+        drawComponent(announcementFormView);
     }
 
     public void handleError(Method method) {
@@ -66,7 +73,7 @@ public class GWTApp implements EntryPoint {
         if (method.getResponse().getStatusCode() == 401) {
             showLoginPage();
         }
-        flexTable.setWidget(0, 0, apiErrorView);
+        drawError(apiErrorView);
         apiErrorView.show(method);
     }
 
