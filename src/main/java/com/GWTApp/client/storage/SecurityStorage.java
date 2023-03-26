@@ -14,7 +14,7 @@ public class SecurityStorage {
         String authDetailsJson = Storage.getLocalStorageIfSupported().getItem("authDetails");
         try {
             AuthDetails authDetails = AuthDetails.fromJson(authDetailsJson);
-            return authDetails.getTokenType() + " " + authDetails.getAccessToken();
+            return authDetails.getAccessToken();
         } catch (Exception e) {
 
             return null;
@@ -34,6 +34,7 @@ public class SecurityStorage {
     }
 
     public static void saveAuthDetails(AuthDetails authDetails) {
+        authDetails.setAccessToken("Bearer "+authDetails.getAccessToken());
         Storage.getLocalStorageIfSupported().setItem("authDetails", AuthDetails.toJson(authDetails));
     }
 
